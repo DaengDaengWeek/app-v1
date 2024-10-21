@@ -23,6 +23,7 @@
 		38AFC43A2CBD9EE300D9414E /* EF_Rainyday-R(otf).otf in Resources */ = {isa = PBXBuildFile; fileRef = 38AFC4372CBD9EE300D9414E /* EF_Rainyday-R(otf).otf */; };
 		38AFC43D2CBDA32300D9414E /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38AFC43C2CBDA32300D9414E /* Color.swift */; };
 		6AA0C2072CC22CC40098EF87 /* MedicalcardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA0C2062CC22CC40098EF87 /* MedicalcardView.swift */; };
+		A10D22282CC64AE00037EF6E /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = A10D22272CC64AE00037EF6E /* SDWebImageSwiftUI */; };
 		A15706202CC0E6DD00115165 /* MainViewProf.swift in Sources */ = {isa = PBXBuildFile; fileRef = A157061F2CC0E6CB00115165 /* MainViewProf.swift */; };
 		A15706222CC0F80C00115165 /* searchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15706212CC0F80000115165 /* searchBarView.swift */; };
 		A1F31D832CBE543B00227EFE /* EncylopediaView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F31D822CBE543100227EFE /* EncylopediaView2.swift */; };
@@ -57,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A10D22282CC64AE00037EF6E /* SDWebImageSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,6 +208,9 @@
 				Base,
 			);
 			mainGroup = 38AFC4072CBD0C0700D9414E;
+			packageReferences = (
+				A10D22262CC64AE00037EF6E /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+			);
 			productRefGroup = 38AFC4112CBD0C0700D9414E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -454,6 +459,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A10D22262CC64AE00037EF6E /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.1.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A10D22272CC64AE00037EF6E /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A10D22262CC64AE00037EF6E /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 38AFC4082CBD0C0700D9414E /* Project object */;
 }

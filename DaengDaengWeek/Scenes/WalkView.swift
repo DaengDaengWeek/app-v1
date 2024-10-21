@@ -6,29 +6,42 @@
 //
 import SwiftUI
 import HealthKit
+import SDWebImageSwiftUI
 
 struct WalkView: View {
     @State private var showPopup = true
     @State private var steps: Int = 524
     @State private var exerciseTime: Int = 16
-    @State private var progress: Double = 0.51
+    @State private var progress: Double = 0.7
+    @State private var backgroundOffset: CGFloat = 0
     
     private let healthStore = HKHealthStore()
     
     var body: some View {
         ZStack {
-            Color(Color.btnPink)
-                .edgesIgnoringSafeArea(.all)
-            // Background color
+            // Moving background
+                        GeometryReader { geometry in
+                            Image("walkBackground") // 적절한 배경 이미지로 교체해주세요
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: geometry.size.width * 2)
+                                .offset(x: -backgroundOffset)
+                                .ignoresSafeArea()
+                        }
+                        .onAppear {
+                            withAnimation(.linear(duration: 5).repeatForever(autoreverses: false)) {
+                                backgroundOffset = UIScreen.main.bounds.width
+                            }
+                        }
             
             VStack{
-                MainViewProf(affectionLevel:.constant(0.3),backgroundColor: Color.btnPink)
+                MainViewProf(affectionLevel:.constant(0.3),backgroundColor: Color.clear)
                     .padding(EdgeInsets(top:-250, leading:0, bottom: 20, trailing: 0))
                 
                 Spacer()
                 
                 // Dog image
-                Image("dog")
+                AnimatedImage(name: "dogwalk.gif")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 150, height: 150)
@@ -50,6 +63,7 @@ struct WalkView: View {
                 Image("dogwalkwithperson")
                     .resizable()
                     .frame(width: 35, height: 35)
+                    .offset(x: CGFloat(progress) * 325 - 150)
                     .padding(EdgeInsets(top:-10, leading:0, bottom: 5, trailing: 0))
                 
                 
