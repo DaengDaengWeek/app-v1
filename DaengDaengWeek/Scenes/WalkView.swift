@@ -17,7 +17,7 @@ struct WalkView: View {
     
     private let healthStore = HKHealthStore()
     
-    var body: some View {
+    var body: some View {  
         ZStack {
             // Moving background
                         GeometryReader { geometry in
