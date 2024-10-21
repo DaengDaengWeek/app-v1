@@ -84,6 +84,7 @@
 			children = (
 				38AFC43B2CBDA08100D9414E /* Info.plist */,
 				38AFC4222CBD0F3600D9414E /* App */,
+				38AFC43E2CC6ACF100D9414E /* CustomView */,
 				38AFC4212CBD0F2C00D9414E /* Scenes */,
 				38AFC4252CBD9C2C00D9414E /* Extension */,
 				38AFC4322CBD9E1100D9414E /* Resource */,
@@ -160,6 +161,13 @@
 				38AFC4372CBD9EE300D9414E /* EF_Rainyday-R(otf).otf */,
 			);
 			path = Rainyday;
+			sourceTree = "<group>";
+		};
+		38AFC43E2CC6ACF100D9414E /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CustomView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

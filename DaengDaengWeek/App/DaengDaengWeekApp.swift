@@ -11,7 +11,7 @@ import SwiftUI
 struct DaengDaengWeekApp: App {
     var body: some Scene {
         WindowGroup {
-            EncyclopediaView2()
+            EndingView()
         }
     }
 }
