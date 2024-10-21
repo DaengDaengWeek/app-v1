@@ -15,7 +15,8 @@ struct EndingView: View {
     let textList = [
         "바빠서 밥을 늦게 준 날, 너는 배고파서\n사료 그릇을 뚫어져라 쳐다보고 있었지.\n밥 잘 먹고 풀려서 다행이었어.",
         "처음 산책할 때 내가 너무 빨리 걸었었지?\n헐떡거리면서 깡총깡총 열심히 걷는 모습에\n미안하면서도 귀엽더라고.",
-        "건강검진 받으면서 덜덜 떨었지만, 끝까지 잘\n따라줘서 정말 고마웠어. 너도 나도\n긴장했지만, 잘해줘서 너무 대견했어!"
+        "건강검진 받으면서 덜덜 떨었지만, 끝까지 잘\n따라줘서 정말 고마웠어. 너도 나도\n긴장했지만, 잘해줘서 너무 대견했어!",
+        "초보 주인이라 했던 걱정은 털어버리고\n너가 내 옆에서 행복할 수 있다면\n뭐든 할 수 있다는 걸 알았어.\n사랑해, 앞으로도 행복하게 지내자!"
     ]
     
     @State private var idx = 0
@@ -26,72 +27,86 @@ struct EndingView: View {
         ZStack {
             Color.black.ignoresSafeArea()
             
-            if !isFading {
-                VStack {
-                    PolaroidView(photoImg: photoImgList[idx], photoText: photoTextList[idx], dateText: dateTextList[idx])
-                        .padding(.top, 133)
-                        .transition(.opacity)
-                    
-                    Spacer().frame(height: 27)
-                    
-                    Text(textList[idx])
-                        .foregroundColor(.white)
-                        .font(.dw(.light, size: 20))
-                        .multilineTextAlignment(.center)
-                        .lineSpacing(3)
-                        .frame(width: 308, height: 90)
-                        .opacity(isShowing ? 1 : 0)
-                        .transition(.opacity)
-                    
-                    Spacer().frame(height: 154)
-                }
-                .onAppear {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                        isShowing = true
-                    }
-                }
+            if idx == 3 {
                 
-                .onTapGesture {
-                    withAnimation(.easeInOut(duration: 0.8)) {
-                        isFading = true
-                    }
-                    
-                    withAnimation(.easeInOut(duration: 0.8)) {
-                        isShowing = false
-                    }
-                    
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
-                        idx = (idx + 1) % photoImgList.count
-                        
-                        withAnimation(.easeInOut(duration: 0.8)) {
-                            isFading = false
-                        }
-
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+                Text(textList[3])
+                    .foregroundColor(Color.endingBeige)
+                    .font(.dw(.light, size: 20))
+                    .multilineTextAlignment(.center)
+                    .lineSpacing(3)
+                    .frame(width: 308)
+                    .opacity(isShowing ? 1 : 0)
+                    .transition(.opacity)
+                    .onAppear {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                             withAnimation(.easeInOut(duration: 0.8)) {
                                 isShowing = true
                             }
                         }
                     }
+                    .onTapGesture {
+                        let _ = print("End")
+                        withAnimation(.easeInOut(duration: 0.8)) {
+                            isShowing = false
+                        }
+                        // 엔딩 종료, 시작 화면으로 이동
+                    }
+                
+                Spacer().frame(height: 164)
+                
+            }
+            else {
+                
+                if !isFading {
+                    VStack {
+                        PolaroidView(photoImg: photoImgList[idx], photoText: photoTextList[idx], dateText: dateTextList[idx])
+                            .padding(.top, 133)
+                            .transition(.opacity)
+                        
+                        Spacer().frame(height: 27)
+                        
+                        Text(textList[idx])
+                            .foregroundColor(Color.endingBeige)
+                            .font(.dw(.light, size: 20))
+                            .multilineTextAlignment(.center)
+                            .lineSpacing(3)
+                            .frame(width: 308, height: 90)
+                            .opacity(isShowing ? 1 : 0)
+                            .transition(.opacity)
+                        
+                        Spacer().frame(height: 154)
+                    }
+                    .onAppear {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                            isShowing = true
+                        }
+                    }
+                    
+                    .onTapGesture {
+                        withAnimation(.easeInOut(duration: 0.8)) {
+                            isFading = true
+                        }
+                        
+                        withAnimation(.easeInOut(duration: 0.8)) {
+                            isShowing = false
+                        }
+                        
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+                            idx += 1
+                            
+                            withAnimation(.easeInOut(duration: 0.8)) {
+                                isFading = false
+                            }
+
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+                                withAnimation(.easeInOut(duration: 0.8)) {
+                                    isShowing = true
+                                }
+                            }
+                        }
+                    }
                 }
             }
-            
-//            VStack {
-//                PolaroidView(photoImg: photoImgList[idx], photoText: photoTextList[idx], dateText: dateTextList[idx])
-//                    .padding(.top, 133)
-//                
-//                Spacer().frame(height: 27)
-//                
-//                Text(textList[idx])
-//                    .foregroundColor(.white)
-//                    .font(.dw(.light, size: 20))
-//                    .multilineTextAlignment(.center)
-//                    .lineSpacing(3)
-//                    .frame(width: 308, height: 90)
-//                
-//                Spacer().frame(height: 154)
-//            }
-
         }
     }
 }
