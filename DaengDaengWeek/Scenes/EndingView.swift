@@ -22,10 +22,18 @@ struct EndingView: View {
     @State private var idx = 0
     @State private var isFading = false // 화면 전체 페이드아웃 컨트롤
     @State private var isShowing = false // 텍스트 컨트롤
+    @State private var isBlackScreen = true
+    @State private var goToHome = false
     
     var body: some View {
         ZStack {
             Color.black.ignoresSafeArea()
+            
+            if isBlackScreen { // 검은 화면으로 페이드아웃 효과
+                Color.black
+                    .ignoresSafeArea()
+                    .transition(.opacity)
+            }
             
             if idx == 3 {
                 
@@ -77,34 +85,104 @@ struct EndingView: View {
                         Spacer().frame(height: 154)
                     }
                     .onAppear {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                            isShowing = true
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {
+                            withAnimation(.easeInOut(duration: 1.5)) {
+                                isBlackScreen = false // 검은 화면 사라짐
+                            }
+                            
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                                isShowing = true // 텍스트와 이미지 표시 시작
+                            }
                         }
                     }
                     
                     .onTapGesture {
+//                        withAnimation(.easeInOut(duration: 0.8)) {
+//                            isFading = true // 텍스트와 이미지 사라지기
+//                        }
+                        idx += 1
                         withAnimation(.easeInOut(duration: 0.8)) {
                             isFading = true
-                        }
-                        
-                        withAnimation(.easeInOut(duration: 0.8)) {
-                            isShowing = false
+                            isShowing = false // 텍스트와 이미지 사라지기
                         }
                         
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
-                            idx += 1
-                            
-                            withAnimation(.easeInOut(duration: 0.8)) {
-                                isFading = false
+                            withAnimation(.easeInOut(duration: 1.5)) {
+                                isBlackScreen = true // 검은 화면으로 전환
                             }
-
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
-                                withAnimation(.easeInOut(duration: 0.8)) {
-                                    isShowing = true
+                            
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                                
+                                
+                                withAnimation(.easeInOut(duration: 1.5)) {
+                                    isBlackScreen = false
+                                    
+                                }
+//                                
+//
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+                                    
+                                    withAnimation(.easeInOut(duration: 0.8)) {
+                                        isFading = false
+                                        isShowing = true
+                                    }
                                 }
                             }
                         }
                     }
+                    
+//                    .onTapGesture {
+//                        withAnimation(.easeInOut(duration: 0.8)) {
+//                            isFading = true
+//                        }
+//                        
+//                        withAnimation(.easeInOut(duration: 0.8)) {
+//                            isShowing = false // 텍스트와 이미지 사라지기
+//                        }
+//                        withAnimation(.easeInOut(duration: 0.8)) {
+//                            isBlackScreen = true // 검은 화면으로 전환
+//                        }
+//                        
+//                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) { // 검은 화면 후 새로운 컨텐츠
+//                            idx += 1
+//                            
+//                            withAnimation(.easeInOut(duration: 0.8)) {
+//                                isFading = false // 검은 화면에서 다음 화면으로 전환
+//                            }
+//                            withAnimation(.easeInOut(duration: 0.8)) {
+//                                isBlackScreen = false // 검은 화면에서 다음 화면으로 전환
+//                            }
+//                            
+//                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+//                                withAnimation(.easeInOut(duration: 0.8)) {
+//                                    isShowing = true // 다음 텍스트와 이미지 등장
+//                                }
+//                            }
+//                        }
+//                    }
+//                    .onTapGesture {
+//                        withAnimation(.easeInOut(duration: 0.8)) {
+//                            isFading = true
+//                        }
+//                        
+//                        withAnimation(.easeInOut(duration: 0.8)) {
+//                            isShowing = false
+//                        }
+//                        
+//                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+//                            idx += 1
+//                            
+//                            withAnimation(.easeInOut(duration: 0.8)) {
+//                                isFading = false
+//                            }
+//
+//                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+//                                withAnimation(.easeInOut(duration: 0.8)) {
+//                                    isShowing = true
+//                                }
+//                            }
+//                        }
+//                    }
                 }
             }
         }

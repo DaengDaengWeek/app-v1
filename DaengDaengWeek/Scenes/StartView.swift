@@ -7,6 +7,7 @@ struct StartView: View {
     @State private var animationDuration = 2.0 // 애니메이션 시간(초)
     @State private var imagePadding: CGFloat = 100 // 상단 이미지 패딩
     @State private var showSecondGIF = false // 두 번째 GIF 표시 여부 플래그
+    @State private var goToHome = false
 
     // 타이머 퍼블리셔 설정: isSecondColor 상태 변화를 감지
     let colorChangePublisher = Timer.publish(every: 0.1, on: .main, in: .default).autoconnect()
