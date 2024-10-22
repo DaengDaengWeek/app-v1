@@ -36,5 +36,8 @@ extension Color {
     static let heartPink = Color(hex: "FFA6EF")
     static let lineGray = Color(hex: "D9D9D9")
     static let btnPink = Color(hex:"F6E3E3")
+    static let startBeigebtn = Color(hex:"F8EBDB")
+    static let startbackgroundGray = Color(hex:"BBBBBB")
+    static let startbackgroundYellow = Color(hex:"F3F3E9")
     static let endingBeige = Color(hex: "#F0EADD")
 }

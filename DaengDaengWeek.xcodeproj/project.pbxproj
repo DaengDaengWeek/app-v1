@@ -22,6 +22,10 @@
 		38AFC4392CBD9EE300D9414E /* EF_Rainyday-B(otf).otf in Resources */ = {isa = PBXBuildFile; fileRef = 38AFC4362CBD9EE300D9414E /* EF_Rainyday-B(otf).otf */; };
 		38AFC43A2CBD9EE300D9414E /* EF_Rainyday-R(otf).otf in Resources */ = {isa = PBXBuildFile; fileRef = 38AFC4372CBD9EE300D9414E /* EF_Rainyday-R(otf).otf */; };
 		38AFC43D2CBDA32300D9414E /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38AFC43C2CBDA32300D9414E /* Color.swift */; };
+		6A4B078D2CC7650E00C044CA /* Mainfirst.gif in Resources */ = {isa = PBXBuildFile; fileRef = 6A4B078C2CC7650E00C044CA /* Mainfirst.gif */; };
+		6A4B07902CC765B700C044CA /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 6A4B078F2CC765B700C044CA /* SDWebImageSwiftUI */; };
+		6A4B07942CC76A9000C044CA /* Mainsecond.gif in Resources */ = {isa = PBXBuildFile; fileRef = 6A4B07932CC76A9000C044CA /* Mainsecond.gif */; };
+		6A6B50932CC68DF400ADBEE6 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 6A6B50922CC68DF400ADBEE6 /* Lottie */; };
 		6AA0C2072CC22CC40098EF87 /* MedicalcardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA0C2062CC22CC40098EF87 /* MedicalcardView.swift */; };
 		A15706202CC0E6DD00115165 /* MainViewProf.swift in Sources */ = {isa = PBXBuildFile; fileRef = A157061F2CC0E6CB00115165 /* MainViewProf.swift */; };
 		A15706222CC0F80C00115165 /* searchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15706212CC0F80000115165 /* searchBarView.swift */; };
@@ -46,6 +50,8 @@
 		38AFC4372CBD9EE300D9414E /* EF_Rainyday-R(otf).otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "EF_Rainyday-R(otf).otf"; sourceTree = "<group>"; };
 		38AFC43B2CBDA08100D9414E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		38AFC43C2CBDA32300D9414E /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		6A4B078C2CC7650E00C044CA /* Mainfirst.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Mainfirst.gif; sourceTree = "<group>"; };
+		6A4B07932CC76A9000C044CA /* Mainsecond.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Mainsecond.gif; sourceTree = "<group>"; };
 		6AA0C2062CC22CC40098EF87 /* MedicalcardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicalcardView.swift; sourceTree = "<group>"; };
 		A157061F2CC0E6CB00115165 /* MainViewProf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewProf.swift; sourceTree = "<group>"; };
 		A15706212CC0F80000115165 /* searchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchBarView.swift; sourceTree = "<group>"; };
@@ -57,6 +63,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A4B07902CC765B700C044CA /* SDWebImageSwiftUI in Frameworks */,
+				6A6B50932CC68DF400ADBEE6 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,6 +97,8 @@
 				38AFC4252CBD9C2C00D9414E /* Extension */,
 				38AFC4322CBD9E1100D9414E /* Resource */,
 				38AFC4172CBD0C0800D9414E /* Assets.xcassets */,
+				6A4B078C2CC7650E00C044CA /* Mainfirst.gif */,
+				6A4B07932CC76A9000C044CA /* Mainsecond.gif */,
 				38AFC4152CBD0C0700D9414E /* ContentView.swift */,
 				38AFC4192CBD0C0800D9414E /* Preview Content */,
 			);
@@ -214,6 +224,10 @@
 				Base,
 			);
 			mainGroup = 38AFC4072CBD0C0700D9414E;
+			packageReferences = (
+				6A6B50912CC68DF400ADBEE6 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				6A4B078E2CC765B700C044CA /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+			);
 			productRefGroup = 38AFC4112CBD0C0700D9414E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -232,6 +246,8 @@
 				38AFC43A2CBD9EE300D9414E /* EF_Rainyday-R(otf).otf in Resources */,
 				38AFC4392CBD9EE300D9414E /* EF_Rainyday-B(otf).otf in Resources */,
 				38AFC4382CBD9EE300D9414E /* EF_Rainyday-L(otf).otf in Resources */,
+				6A4B07942CC76A9000C044CA /* Mainsecond.gif in Resources */,
+				6A4B078D2CC7650E00C044CA /* Mainfirst.gif in Resources */,
 				38AFC4182CBD0C0800D9414E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -462,6 +478,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		6A4B078E2CC765B700C044CA /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.1.2;
+			};
+		};
+		6A6B50912CC68DF400ADBEE6 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.5.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6A4B078F2CC765B700C044CA /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6A4B078E2CC765B700C044CA /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+		6A6B50922CC68DF400ADBEE6 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6A6B50912CC68DF400ADBEE6 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 38AFC4082CBD0C0700D9414E /* Project object */;
 }
