@@ -6,41 +6,51 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct HospitalView: View {
+    
+    //.statusBar(hidden: true)
     
     @State private var currentTime: String = ""
     @State private var affectionLevel: Double = 0.3
     @State private var showPopup: Bool = false
     @State private var feedingProgress: CGFloat = 1.0
     @State private var activePopup: String? = nil
-    @State private var showSmallIcons: Bool = false
+    
+    let BigButtonList = ["treatmentIcon", "checkupIcon", "injectionIcon", "beautyIcon"]
+    let BigButtonTextList = ["진료받기", "건강검진", "예방접종", "미용하기"]
     
     var body: some View {
         ZStack {
-            Image("hospital_bg") // 추후 배경 추가시 이름 변경
+            Image("hospital_bg")
                 .resizable()
                 .scaledToFill()
                 .edgesIgnoringSafeArea(.all)
             
             VStack {
                 
-                //MainViewProf(affectionLevel: $affectionLevel, backgroundColor: .white)
-                //    .padding(EdgeInsets(top: -30, leading: 0, bottom: 100, trailing: 8))
+                StateView(affectionLevel: $affectionLevel, moneyAmount: .constant(2500000), backgroundColor: .clear, isHospital: true)
+                    .padding(.top, 50)
+                    .padding(.trailing, -6)
 
                 Spacer()
-
-                // Center image area
-                Image("Maindog1")
+                
+                AnimatedImage(name: "HospitalMotion.gif")
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 200, height: 200)
-                    .padding(.bottom, 120)
+                    .frame(width: 253, height: 230)
+                    .offset(x: 5, y: -16)
               
                 Spacer()
+                
+                BottomButtonView(backgroundColor: .clear, bigIconList: BigButtonList, iconText: BigButtonTextList, showingFlag: false)
+                    .padding(.bottom, 50)
             }
         }
+        .statusBar(hidden: true)
     }
+    
 }
 
 #Preview {

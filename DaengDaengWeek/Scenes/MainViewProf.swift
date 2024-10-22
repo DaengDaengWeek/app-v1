@@ -71,21 +71,21 @@ struct MainViewProf: View {
                 
                 VStack(spacing:10) { // 설정 버튼들
                     Button(action:{}) {
-                        Image("settingbtn")
+                        Image("settingIcon")
                             .resizable()
                             .scaledToFit()
                             .frame(width:40,height:40)
                     }
                     
                     Button(action:{}) {
-                        Image("noticebtn")
+                        Image("bellIcon")
                             .resizable()
                             .scaledToFit()
                             .frame(width:40,height:40)
                     }
                     
                     Button(action:{}) {
-                        Image("bookbtn")
+                        Image("bookIcon")
                             .resizable()
                             .scaledToFit()
                             .frame(width:40,height:40)
