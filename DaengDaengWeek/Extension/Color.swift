@@ -39,4 +39,5 @@ extension Color {
     static let startBeigebtn = Color(hex:"F8EBDB")
     static let startbackgroundGray = Color(hex:"BBBBBB")
     static let startbackgroundYellow = Color(hex:"F3F3E9")
+    static let endingBeige = Color(hex: "#F0EADD")
 }
