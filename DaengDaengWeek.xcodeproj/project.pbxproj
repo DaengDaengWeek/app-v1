@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		382262E62CC7F42C0028C6C1 /* BottomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382262E52CC7F42C0028C6C1 /* BottomButtonView.swift */; };
+		382262E92CC7FD0B0028C6C1 /* CheckupMotion.gif in Resources */ = {isa = PBXBuildFile; fileRef = 382262E72CC7FD0B0028C6C1 /* CheckupMotion.gif */; };
+		382262EA2CC7FD0B0028C6C1 /* HospitalMotion.gif in Resources */ = {isa = PBXBuildFile; fileRef = 382262E82CC7FD0B0028C6C1 /* HospitalMotion.gif */; };
+		382262ED2CC80E080028C6C1 /* MainMotion2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 382262EB2CC80E080028C6C1 /* MainMotion2.gif */; };
+		382262EE2CC80E080028C6C1 /* MainMotion1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 382262EC2CC80E080028C6C1 /* MainMotion1.gif */; };
 		38AFC4142CBD0C0700D9414E /* DaengDaengWeekApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38AFC4132CBD0C0700D9414E /* DaengDaengWeekApp.swift */; };
 		38AFC4162CBD0C0700D9414E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38AFC4152CBD0C0700D9414E /* ContentView.swift */; };
 		38AFC4182CBD0C0800D9414E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38AFC4172CBD0C0800D9414E /* Assets.xcassets */; };
@@ -22,11 +27,11 @@
 		38AFC4392CBD9EE300D9414E /* EF_Rainyday-B(otf).otf in Resources */ = {isa = PBXBuildFile; fileRef = 38AFC4362CBD9EE300D9414E /* EF_Rainyday-B(otf).otf */; };
 		38AFC43A2CBD9EE300D9414E /* EF_Rainyday-R(otf).otf in Resources */ = {isa = PBXBuildFile; fileRef = 38AFC4372CBD9EE300D9414E /* EF_Rainyday-R(otf).otf */; };
 		38AFC43D2CBDA32300D9414E /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38AFC43C2CBDA32300D9414E /* Color.swift */; };
+		38AFC4402CC6E1A700D9414E /* StateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38AFC43F2CC6E1A700D9414E /* StateView.swift */; };
 		6A4B078D2CC7650E00C044CA /* Mainfirst.gif in Resources */ = {isa = PBXBuildFile; fileRef = 6A4B078C2CC7650E00C044CA /* Mainfirst.gif */; };
 		6A4B07902CC765B700C044CA /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 6A4B078F2CC765B700C044CA /* SDWebImageSwiftUI */; };
 		6A4B07942CC76A9000C044CA /* Mainsecond.gif in Resources */ = {isa = PBXBuildFile; fileRef = 6A4B07932CC76A9000C044CA /* Mainsecond.gif */; };
 		6A6B50932CC68DF400ADBEE6 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 6A6B50922CC68DF400ADBEE6 /* Lottie */; };
-		38AFC4402CC6E1A700D9414E /* StateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38AFC43F2CC6E1A700D9414E /* StateView.swift */; };
 		6AA0C2072CC22CC40098EF87 /* MedicalcardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA0C2062CC22CC40098EF87 /* MedicalcardView.swift */; };
 		A15706202CC0E6DD00115165 /* MainViewProf.swift in Sources */ = {isa = PBXBuildFile; fileRef = A157061F2CC0E6CB00115165 /* MainViewProf.swift */; };
 		A15706222CC0F80C00115165 /* searchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15706212CC0F80000115165 /* searchBarView.swift */; };
@@ -34,6 +39,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		382262E52CC7F42C0028C6C1 /* BottomButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomButtonView.swift; sourceTree = "<group>"; };
+		382262E72CC7FD0B0028C6C1 /* CheckupMotion.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = CheckupMotion.gif; sourceTree = "<group>"; };
+		382262E82CC7FD0B0028C6C1 /* HospitalMotion.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = HospitalMotion.gif; sourceTree = "<group>"; };
+		382262EB2CC80E080028C6C1 /* MainMotion2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = MainMotion2.gif; sourceTree = "<group>"; };
+		382262EC2CC80E080028C6C1 /* MainMotion1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = MainMotion1.gif; sourceTree = "<group>"; };
 		38AFC4102CBD0C0700D9414E /* DaengDaengWeek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DaengDaengWeek.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38AFC4132CBD0C0700D9414E /* DaengDaengWeekApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaengDaengWeekApp.swift; sourceTree = "<group>"; };
 		38AFC4152CBD0C0700D9414E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -51,9 +61,9 @@
 		38AFC4372CBD9EE300D9414E /* EF_Rainyday-R(otf).otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "EF_Rainyday-R(otf).otf"; sourceTree = "<group>"; };
 		38AFC43B2CBDA08100D9414E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		38AFC43C2CBDA32300D9414E /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		38AFC43F2CC6E1A700D9414E /* StateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateView.swift; sourceTree = "<group>"; };
 		6A4B078C2CC7650E00C044CA /* Mainfirst.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Mainfirst.gif; sourceTree = "<group>"; };
 		6A4B07932CC76A9000C044CA /* Mainsecond.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Mainsecond.gif; sourceTree = "<group>"; };
-		38AFC43F2CC6E1A700D9414E /* StateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateView.swift; sourceTree = "<group>"; };
 		6AA0C2062CC22CC40098EF87 /* MedicalcardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicalcardView.swift; sourceTree = "<group>"; };
 		A157061F2CC0E6CB00115165 /* MainViewProf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewProf.swift; sourceTree = "<group>"; };
 		A15706212CC0F80000115165 /* searchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchBarView.swift; sourceTree = "<group>"; };
@@ -73,6 +83,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		382262EF2CC8118C0028C6C1 /* MotionGifs */ = {
+			isa = PBXGroup;
+			children = (
+				6A4B078C2CC7650E00C044CA /* Mainfirst.gif */,
+				6A4B07932CC76A9000C044CA /* Mainsecond.gif */,
+				382262EC2CC80E080028C6C1 /* MainMotion1.gif */,
+				382262EB2CC80E080028C6C1 /* MainMotion2.gif */,
+				382262E72CC7FD0B0028C6C1 /* CheckupMotion.gif */,
+				382262E82CC7FD0B0028C6C1 /* HospitalMotion.gif */,
+			);
+			path = MotionGifs;
+			sourceTree = "<group>";
+		};
 		38AFC4072CBD0C0700D9414E = {
 			isa = PBXGroup;
 			children = (
@@ -99,8 +122,6 @@
 				38AFC4252CBD9C2C00D9414E /* Extension */,
 				38AFC4322CBD9E1100D9414E /* Resource */,
 				38AFC4172CBD0C0800D9414E /* Assets.xcassets */,
-				6A4B078C2CC7650E00C044CA /* Mainfirst.gif */,
-				6A4B07932CC76A9000C044CA /* Mainsecond.gif */,
 				38AFC4152CBD0C0700D9414E /* ContentView.swift */,
 				38AFC4192CBD0C0800D9414E /* Preview Content */,
 			);
@@ -152,6 +173,7 @@
 		38AFC4322CBD9E1100D9414E /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				382262EF2CC8118C0028C6C1 /* MotionGifs */,
 				38AFC4332CBD9E6E00D9414E /* Fonts */,
 			);
 			path = Resource;
@@ -179,6 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				38AFC43F2CC6E1A700D9414E /* StateView.swift */,
+				382262E52CC7F42C0028C6C1 /* BottomButtonView.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -245,13 +268,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				382262EA2CC7FD0B0028C6C1 /* HospitalMotion.gif in Resources */,
 				38AFC41B2CBD0C0800D9414E /* Preview Assets.xcassets in Resources */,
 				38AFC43A2CBD9EE300D9414E /* EF_Rainyday-R(otf).otf in Resources */,
 				38AFC4392CBD9EE300D9414E /* EF_Rainyday-B(otf).otf in Resources */,
+				382262ED2CC80E080028C6C1 /* MainMotion2.gif in Resources */,
 				38AFC4382CBD9EE300D9414E /* EF_Rainyday-L(otf).otf in Resources */,
 				6A4B07942CC76A9000C044CA /* Mainsecond.gif in Resources */,
 				6A4B078D2CC7650E00C044CA /* Mainfirst.gif in Resources */,
+				382262E92CC7FD0B0028C6C1 /* CheckupMotion.gif in Resources */,
 				38AFC4182CBD0C0800D9414E /* Assets.xcassets in Resources */,
+				382262EE2CC80E080028C6C1 /* MainMotion1.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,6 +302,7 @@
 				A15706222CC0F80C00115165 /* searchBarView.swift in Sources */,
 				38AFC4162CBD0C0700D9414E /* ContentView.swift in Sources */,
 				38AFC4402CC6E1A700D9414E /* StateView.swift in Sources */,
+				382262E62CC7F42C0028C6C1 /* BottomButtonView.swift in Sources */,
 				38AFC42D2CBD9D0D00D9414E /* WalkView.swift in Sources */,
 				38AFC4142CBD0C0700D9414E /* DaengDaengWeekApp.swift in Sources */,
 			);
@@ -335,6 +363,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "댕댕위크";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
@@ -392,6 +421,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "댕댕위크";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
