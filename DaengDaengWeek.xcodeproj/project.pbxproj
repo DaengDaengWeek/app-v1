@@ -12,6 +12,11 @@
 		382262EA2CC7FD0B0028C6C1 /* HospitalMotion.gif in Resources */ = {isa = PBXBuildFile; fileRef = 382262E82CC7FD0B0028C6C1 /* HospitalMotion.gif */; };
 		382262ED2CC80E080028C6C1 /* MainMotion2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 382262EB2CC80E080028C6C1 /* MainMotion2.gif */; };
 		382262EE2CC80E080028C6C1 /* MainMotion1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 382262EC2CC80E080028C6C1 /* MainMotion1.gif */; };
+		382262F12CC818740028C6C1 /* PromiseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382262F02CC818740028C6C1 /* PromiseView.swift */; };
+		382262F32CC823870028C6C1 /* Function.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382262F22CC823870028C6C1 /* Function.swift */; };
+		382262F52CC833600028C6C1 /* AnimatedGifView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382262F42CC833600028C6C1 /* AnimatedGifView.swift */; };
+		382262F72CC837ED0028C6C1 /* FoodMotion.gif in Resources */ = {isa = PBXBuildFile; fileRef = 382262F62CC837ED0028C6C1 /* FoodMotion.gif */; };
+		382262F92CC84D850028C6C1 /* EndingPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382262F82CC84D850028C6C1 /* EndingPopupView.swift */; };
 		38AFC4142CBD0C0700D9414E /* DaengDaengWeekApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38AFC4132CBD0C0700D9414E /* DaengDaengWeekApp.swift */; };
 		38AFC4162CBD0C0700D9414E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38AFC4152CBD0C0700D9414E /* ContentView.swift */; };
 		38AFC4182CBD0C0800D9414E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38AFC4172CBD0C0800D9414E /* Assets.xcassets */; };
@@ -44,6 +49,11 @@
 		382262E82CC7FD0B0028C6C1 /* HospitalMotion.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = HospitalMotion.gif; sourceTree = "<group>"; };
 		382262EB2CC80E080028C6C1 /* MainMotion2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = MainMotion2.gif; sourceTree = "<group>"; };
 		382262EC2CC80E080028C6C1 /* MainMotion1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = MainMotion1.gif; sourceTree = "<group>"; };
+		382262F02CC818740028C6C1 /* PromiseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromiseView.swift; sourceTree = "<group>"; };
+		382262F22CC823870028C6C1 /* Function.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Function.swift; sourceTree = "<group>"; };
+		382262F42CC833600028C6C1 /* AnimatedGifView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedGifView.swift; sourceTree = "<group>"; };
+		382262F62CC837ED0028C6C1 /* FoodMotion.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = FoodMotion.gif; sourceTree = "<group>"; };
+		382262F82CC84D850028C6C1 /* EndingPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndingPopupView.swift; sourceTree = "<group>"; };
 		38AFC4102CBD0C0700D9414E /* DaengDaengWeek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DaengDaengWeek.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38AFC4132CBD0C0700D9414E /* DaengDaengWeekApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaengDaengWeekApp.swift; sourceTree = "<group>"; };
 		38AFC4152CBD0C0700D9414E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -90,6 +100,7 @@
 				6A4B07932CC76A9000C044CA /* Mainsecond.gif */,
 				382262EC2CC80E080028C6C1 /* MainMotion1.gif */,
 				382262EB2CC80E080028C6C1 /* MainMotion2.gif */,
+				382262F62CC837ED0028C6C1 /* FoodMotion.gif */,
 				382262E72CC7FD0B0028C6C1 /* CheckupMotion.gif */,
 				382262E82CC7FD0B0028C6C1 /* HospitalMotion.gif */,
 			);
@@ -140,6 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				38AFC4232CBD98E500D9414E /* StartView.swift */,
+				382262F02CC818740028C6C1 /* PromiseView.swift */,
 				38AFC4282CBD9CF500D9414E /* SettingView.swift */,
 				38AFC42A2CBD9D0200D9414E /* MainView.swift */,
 				A157061F2CC0E6CB00115165 /* MainViewProf.swift */,
@@ -166,6 +178,7 @@
 			children = (
 				38AFC4262CBD9C3F00D9414E /* Font.swift */,
 				38AFC43C2CBDA32300D9414E /* Color.swift */,
+				382262F22CC823870028C6C1 /* Function.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -202,6 +215,8 @@
 			children = (
 				38AFC43F2CC6E1A700D9414E /* StateView.swift */,
 				382262E52CC7F42C0028C6C1 /* BottomButtonView.swift */,
+				382262F42CC833600028C6C1 /* AnimatedGifView.swift */,
+				382262F82CC84D850028C6C1 /* EndingPopupView.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -272,6 +287,7 @@
 				38AFC41B2CBD0C0800D9414E /* Preview Assets.xcassets in Resources */,
 				38AFC43A2CBD9EE300D9414E /* EF_Rainyday-R(otf).otf in Resources */,
 				38AFC4392CBD9EE300D9414E /* EF_Rainyday-B(otf).otf in Resources */,
+				382262F72CC837ED0028C6C1 /* FoodMotion.gif in Resources */,
 				382262ED2CC80E080028C6C1 /* MainMotion2.gif in Resources */,
 				38AFC4382CBD9EE300D9414E /* EF_Rainyday-L(otf).otf in Resources */,
 				6A4B07942CC76A9000C044CA /* Mainsecond.gif in Resources */,
@@ -294,9 +310,13 @@
 				38AFC42B2CBD9D0200D9414E /* MainView.swift in Sources */,
 				38AFC4292CBD9CF500D9414E /* SettingView.swift in Sources */,
 				A1F31D832CBE543B00227EFE /* EncylopediaView2.swift in Sources */,
+				382262F12CC818740028C6C1 /* PromiseView.swift in Sources */,
 				38AFC43D2CBDA32300D9414E /* Color.swift in Sources */,
 				38AFC4242CBD98E500D9414E /* StartView.swift in Sources */,
+				382262F92CC84D850028C6C1 /* EndingPopupView.swift in Sources */,
 				38AFC42F2CBD9D1500D9414E /* HospitalView.swift in Sources */,
+				382262F32CC823870028C6C1 /* Function.swift in Sources */,
+				382262F52CC833600028C6C1 /* AnimatedGifView.swift in Sources */,
 				6AA0C2072CC22CC40098EF87 /* MedicalcardView.swift in Sources */,
 				38AFC4312CBD9D1E00D9414E /* EndingView.swift in Sources */,
 				A15706222CC0F80C00115165 /* searchBarView.swift in Sources */,

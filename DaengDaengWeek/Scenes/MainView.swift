@@ -15,21 +15,15 @@ struct MainView: View {
     @State private var activePopup: String? = nil
     // 작은 아이콘 표시 여부 (먹이주기 버튼 클릭 시 나타남)
     @State private var showSmallIcons: Bool = false
+    @State private var showPlaceIcons: Bool = false
     @State private var moneyAmounts: Int = 0
+    @State private var currentGif: String = "MainMotion2.gif"
+    @State private var goToHospital: Bool = false
+    @State private var goToPark: Bool = false
+    @State private var showEndingPopup = false // 팝업 상태 관리
 
     // 먹이주기 지속 시간 (초)
     private let feedingDuration: TimeInterval = 30.0
-
-    // UI 설정 변수들
-    @State private var borderSize: CGFloat = 3 // 테두리 굵기
-    @State private var buttonSpacing: CGFloat = 20 // 버튼 간격
-    @State private var iconBackgroundColor: Color = .btnBeige // 아이콘 배경색
-    @State private var iconBorderColor: Color = .borderGray // 아이콘 테두리색
-
-    // 이미지 전환을 위한 인덱스 변수
-    @State private var currentImageIndex: Int = 0
-    // 표시할 이미지 배열
-    private let images = ["Maindog1", "Maindog2"]
     
     let BigButtonList = ["feedIcon", "hygienicsIcon", "affectionIcon", "outIcon"]
     let BigButtonTextList = ["먹이주기", "위생관리", "애정표현", "외출하기"]
@@ -41,105 +35,29 @@ struct MainView: View {
 
     var body: some View {
         ZStack {
-            Image("main_bg")
-                .resizable()
-                .scaledToFill()
-                .edgesIgnoringSafeArea(.all)
+            if goToHospital {
+                HospitalView() // 병원 화면으로 전환
+                    .transition(.opacity) // fade-out 애니메이션
+                    .animation(.easeInOut(duration: 0.5))
+            }
+            else if goToPark {
+                WalkView() // 공원 화면으로 전환
+                    .transition(.opacity) // fade-out 애니메이션
+                    .animation(.easeInOut(duration: 0.5))
+            }
+            else {
+                mainContent // MainView의 기존 콘텐츠
+                    .transition(.opacity) // fade-out 애니메이션
+            }
             
-            VStack {
-                
-                StateView(affectionLevel: $affectionLevel, moneyAmount: .constant(2500000), backgroundColor: .clear, isHospital: false)
-                    .padding(.top, 50)
-                    .padding(.trailing, -6)
-
-                Spacer()
-                
-                AnimatedImage(name: "MainMotion2.gif")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 253, height: 230)
-                    .offset(x: 5, y: -16)
-              
-                Spacer()
-                
-                BottomButtonView(backgroundColor: .clear, bigIconList: BigButtonList, iconText: BigButtonTextList, showingFlag: false)
-                    .padding(.bottom, 50)
+            if showEndingPopup {
+                EndingPopupView()
+                    .transition(.opacity) // 팝업에 fade 효과 적용
+                    .animation(.easeInOut(duration: 4.0))
             }
         }
-        .statusBar(hidden: true)
 
-        //                // 작은 아이콘 영역 (먹이주기 버튼 클릭 시 표시)
-        //                if showSmallIcons {
-        //                    HStack(spacing: buttonSpacing) {
-        //                        // 음식 아이콘
-        //                        SmallIconView(
-        //                            icon: Image("Foodicon"),
-        //                            backgroundColor: iconBackgroundColor,
-        //                            borderColor: iconBorderColor,
-        //                            borderWidth: 2
-        //                        )
-        //                        // 물 아이콘
-        //                        SmallIconView(
-        //                            icon: Image("Watericon"),
-        //                            backgroundColor: iconBackgroundColor,
-        //                            borderColor: iconBorderColor,
-        //                            borderWidth: 2
-        //                        )
-        //                        // 간식 아이콘
-        //                        SmallIconView(
-        //                            icon: Image("Snackicon"),
-        //                            backgroundColor: iconBackgroundColor,
-        //                            borderColor: iconBorderColor,
-        //                            borderWidth: 2
-        //                        )
-        //                    }
-        //                    .transition(.opacity)
-        //                    .padding(.bottom, 10)
-        //                    .padding(.leading, -100) // 왼쪽으로 정렬하여 먹이주기 아이콘 영역 끝에서부터 시작되도록
-        //                }
-        //
-        //                // 하단 버튼 영역
-        //                HStack(spacing: buttonSpacing) {
-        //                    // 먹이주기 버튼
-        //                    FeedingButtonView(
-        //                        icon: Image("feedingbtn"),
-        //                        text: "먹이주기",
-        //                        progress: feedingProgress,
-        //                        backgroundColor: iconBackgroundColor,
-        //                        borderWidth: borderSize,
-        //                        action: {
-        //                            increaseAffection() // 상호작용시 호감도
-        //                            refillFeedingProgress() // 먹이주기 진행도 초기화
-        //                            withAnimation {
-        //                                showSmallIcons.toggle() // 작은 아이콘 표시/숨김 토글
-        //                            }
-        //                        }
-        //                    )
-        //
-        //                    // 위생관리 버튼
-        //                    ButtonView(
-        //                        icon: Image("hygienebtn"),
-        //                        text: "위생관리",
-        //                        backgroundColor: iconBackgroundColor,
-        //                        borderWidth: borderSize,
-        //                        action: {
-        //                            increaseAffection() // 상호작용시 호감도
-        //                            togglePopup(for: "hygiene") // 위생관리 팝업 토글
-        //                        }
-        //                    )
-        //
-        //                    // 애정표현 버튼
-        //                    ButtonView(
-        //                        icon: Image("affectionbtn"),
-        //                        text: "애정표현",
-        //                        backgroundColor: iconBackgroundColor,
-        //                        borderWidth: borderSize,
-        //                        action: {
-        //                            increaseAffection() // 상호작용시 호감도
-        //                            togglePopup(for: "affection") // 애정표현 팝업 토글
-        //                        }
-        //                    )
-        //
+
         //                    // 외출하기 버튼
         //                    ButtonView(
         //                        icon: Image("outingbtn"),
@@ -168,6 +86,44 @@ struct MainView: View {
         //        }
         //    }
     }
+    
+    private var mainContent: some View {
+        ZStack {
+            Image("main_bg")
+                .resizable()
+                .scaledToFill()
+                .edgesIgnoringSafeArea(.all)
+            
+            VStack {
+                
+                StateView(affectionLevel: $affectionLevel, moneyAmount: .constant(250000), backgroundColor: .clear, isHospital: false)
+                    .padding(.top, 50)
+                    .padding(.trailing, -6)
+
+                Spacer()
+                
+                AnimatedGifView(currentGif: $currentGif)
+                    .frame(width: 253, height: 230)
+                    .offset(x: 5, y: -16)
+              
+                Spacer()
+                
+                BottomButtonView(affectionLevel: $affectionLevel,
+                                 currentGif: .constant(""),
+                                 performCheckup: {},
+                                 performFood: { performFood() },
+                                 showEnding: { showEnding() },
+                                 goPark: { goPark() },
+                                 goHospital: { goHospital() },
+                                 backgroundColor: .clear,
+                                 place: "main",
+                                 bigIconList: BigButtonList,
+                                 iconText: BigButtonTextList)
+                    .padding(.bottom, 50)
+            }
+        }
+        .statusBar(hidden: true)
+    }
 
     // 현재 시간 업데이트 함수
     func updateTime() {
@@ -179,7 +135,31 @@ struct MainView: View {
             currentTime = formatter.string(from: Date())
         }
     }
-
+    
+    func performFood() {
+        currentGif = "FoodMotion.gif"
+    }
+    
+    func showEnding() {
+        //엔딩
+        withAnimation {
+            showEndingPopup = true
+        }
+        
+    }
+    
+    func goHospital() {
+        withAnimation {
+            goToHospital = true 
+        }
+    }
+    
+    func goPark() {
+        withAnimation {
+            goToPark = true
+        }
+    }
+    
     // 먹이주기 진행도 업데이트 함수
     func updateFeedingProgress() {
         let decrement = CGFloat(0.1 / feedingDuration)
@@ -198,11 +178,6 @@ struct MainView: View {
     // 팝업 표시 상태 토글 함수
     func togglePopup(for buttonType: String) {
         activePopup = activePopup == buttonType ? nil : buttonType
-    }
-
-    // 이미지 순환 함수
-    func cycleImages() {
-        currentImageIndex = (currentImageIndex + 1) % images.count
     }
 }
 
@@ -231,42 +206,6 @@ struct FeedingButtonView: View {
                         .frame(height: 80 * progress)
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                 }
-
-                // 아이콘과 텍스트
-                VStack(spacing: 1) {
-                    icon
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width :50,height :50)
-
-                    Text(text)
-                        .font(.system(size :14,weight :.bold))
-                        .foregroundColor(.black)
-
-                }
-
-            }.frame(width :80,height :80).overlay(RoundedRectangle(cornerRadius :10).stroke(Color.gray,lineWidth :5))
-        }
-
-    }
-
-}
-
-
-// 일반 버튼 뷰
-struct ButtonView: View {
-    let icon: Image
-    let text: String
-    let backgroundColor: Color
-    let borderWidth: CGFloat
-    let action: () -> Void
-
-    var body: some View {
-        Button(action: action) {
-            ZStack {
-                // 버튼 배경
-                backgroundColor
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
 
                 // 아이콘과 텍스트
                 VStack(spacing: 1) {
