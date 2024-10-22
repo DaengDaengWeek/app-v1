@@ -132,7 +132,7 @@ struct MedicalCardPopupView: View {
                     // 하단 고정 버튼들
                     HStack(spacing: 20) {
                         HStack(spacing: 5) {
-                            Image(.coinicon)
+                            Image("coinIcon")
                             Text("150,000원")
                                 .font(.dw(.regular, size: 12))
                         }

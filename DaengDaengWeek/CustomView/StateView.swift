@@ -1,13 +1,14 @@
 //
-//  MainViewProf.swift
+//  StateView.swift
 //  DaengDaengWeek
 //
-//  Created by 안준범 on 10/17/24.
+//  Created by Jini on 10/22/24.
 //
 
 import SwiftUI
 
-struct MainViewProf: View {
+struct StateView: View {
+    
     @Binding var affectionLevel: Double // 애정도 상태를 부모 뷰와 공유
     @State private var currentTime: String = "" // 현재 시간을 저장
     
@@ -66,6 +67,7 @@ struct MainViewProf: View {
                 
                 Image("coinIcon") // 돈 아이콘
                     .padding(EdgeInsets(top:0, leading:0,bottom:100,trailing:20))
+                    .frame(width: 20, height: 40)
                 
                 Spacer()
                 
@@ -109,6 +111,6 @@ struct MainViewProf: View {
     }
 }
 
-#Preview{
-   MainViewProf(affectionLevel:.constant(0.3), backgroundColor:.clear)
+#Preview {
+    StateView(affectionLevel:.constant(0.3), backgroundColor:.clear)
 }
