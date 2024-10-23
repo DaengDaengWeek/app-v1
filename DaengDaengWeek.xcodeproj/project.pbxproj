@@ -37,8 +37,10 @@
 		6A4B07902CC765B700C044CA /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 6A4B078F2CC765B700C044CA /* SDWebImageSwiftUI */; };
 		6A4B07942CC76A9000C044CA /* Mainsecond.gif in Resources */ = {isa = PBXBuildFile; fileRef = 6A4B07932CC76A9000C044CA /* Mainsecond.gif */; };
 		6AA0C2072CC22CC40098EF87 /* MedicalcardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA0C2062CC22CC40098EF87 /* MedicalcardView.swift */; };
+		A10D22282CC64AE00037EF6E /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = A10D22272CC64AE00037EF6E /* SDWebImageSwiftUI */; };
 		A15706202CC0E6DD00115165 /* MainViewProf.swift in Sources */ = {isa = PBXBuildFile; fileRef = A157061F2CC0E6CB00115165 /* MainViewProf.swift */; };
 		A15706222CC0F80C00115165 /* searchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15706212CC0F80000115165 /* searchBarView.swift */; };
+		A1D773292CC8BB4200E91365 /* walkingdog.gif in Resources */ = {isa = PBXBuildFile; fileRef = A1D773282CC8BB4200E91365 /* walkingdog.gif */; };
 		A1F31D832CBE543B00227EFE /* EncylopediaView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F31D822CBE543100227EFE /* EncylopediaView2.swift */; };
 /* End PBXBuildFile section */
 
@@ -76,6 +78,7 @@
 		6AA0C2062CC22CC40098EF87 /* MedicalcardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicalcardView.swift; sourceTree = "<group>"; };
 		A157061F2CC0E6CB00115165 /* MainViewProf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewProf.swift; sourceTree = "<group>"; };
 		A15706212CC0F80000115165 /* searchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchBarView.swift; sourceTree = "<group>"; };
+		A1D773282CC8BB4200E91365 /* walkingdog.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = walkingdog.gif; sourceTree = "<group>"; };
 		A1F31D822CBE543100227EFE /* EncylopediaView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncylopediaView2.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -94,6 +97,7 @@
 		382262EF2CC8118C0028C6C1 /* MotionGifs */ = {
 			isa = PBXGroup;
 			children = (
+				A1D773282CC8BB4200E91365 /* walkingdog.gif */,
 				6A4B078C2CC7650E00C044CA /* Mainfirst.gif */,
 				6A4B07932CC76A9000C044CA /* Mainsecond.gif */,
 				382262EC2CC80E080028C6C1 /* MainMotion1.gif */,
@@ -283,6 +287,7 @@
 			files = (
 				382262EA2CC7FD0B0028C6C1 /* HospitalMotion.gif in Resources */,
 				38AFC41B2CBD0C0800D9414E /* Preview Assets.xcassets in Resources */,
+				A1D773292CC8BB4200E91365 /* walkingdog.gif in Resources */,
 				38AFC43A2CBD9EE300D9414E /* EF_Rainyday-R(otf).otf in Resources */,
 				38AFC4392CBD9EE300D9414E /* EF_Rainyday-B(otf).otf in Resources */,
 				382262F72CC837ED0028C6C1 /* FoodMotion.gif in Resources */,
