@@ -13,7 +13,8 @@ struct WalkView: View {
     @State private var steps: Int = 524
     @State private var exerciseTime: Int = 16
     @State private var progress: Double = 0.7
-    @State private var backgroundOffset: CGFloat = 0
+    @State private var backgroundOffset: CGFloat = -20
+    @State private var animationDuration: Double = 3
     @State private var showMainView = false
     @State private var affectionLevel: Double = 0.3
     @State private var currentGif: String = "WalkMotion.gif"
@@ -79,22 +80,22 @@ struct WalkView: View {
         ZStack {
             GeometryReader { geometry in
                 HStack(spacing: 0) {
+                    let imageWidth = UIImage(named: "walk_bg")?.size.width ?? geometry.size.width
                     Image("walk_bg")
                         .resizable()
                         .aspectRatio(contentMode: .fill)
-                        .frame(width: geometry.size.width, height: geometry.size.height)
+                        .frame(width: imageWidth, height: geometry.size.height)
                     Image("walk_bg") // Second copy of the background
                         .resizable()
                         .aspectRatio(contentMode: .fill)
-                        .frame(width: geometry.size.width, height: geometry.size.height)
+                        .frame(width: imageWidth, height: geometry.size.height)
                 }
-                .offset(x: -backgroundOffset) // Offset moves both images simultaneously
+                .offset(x: -backgroundOffset)
                 .animation(.linear(duration: 5).repeatForever(autoreverses: false), value: backgroundOffset)
                 .onAppear {
-                    // Animate the background offset to create a continuous scrolling effect
-                    withAnimation(.linear(duration: 10).repeatForever(autoreverses: false)) {
-                        backgroundOffset = geometry.size.width
-                    }
+                    // 이미지의 원본 너비를 얻고 스크롤 시작
+                    let imageWidth = UIImage(named: "walk_bg")?.size.width ?? geometry.size.width
+                    startScrolling(imageWidth)
                 }
                 .ignoresSafeArea()
             }
@@ -192,6 +193,13 @@ struct WalkView: View {
             
         }
         .statusBar(hidden: true)
+    }
+    
+    private func startScrolling(_ width: CGFloat) {
+        // 애니메이션을 사용하여 배경을 원본 너비만큼 이동
+        withAnimation(.linear(duration: 5).repeatForever(autoreverses: false)) {
+            backgroundOffset = width-20
+        }
     }
     
     func goHome() {
