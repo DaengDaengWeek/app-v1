@@ -64,7 +64,7 @@ struct MainViewProf: View {
                 
                 Spacer()
                 
-                Image("coinIcon") // 돈 아이콘
+                Image("money") // 돈 아이콘
                     .padding(EdgeInsets(top:0, leading:0,bottom:100,trailing:20))
                 
                 Spacer()
