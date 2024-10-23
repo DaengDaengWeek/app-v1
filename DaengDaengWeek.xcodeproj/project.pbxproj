@@ -36,7 +36,6 @@
 		6A4B078D2CC7650E00C044CA /* Mainfirst.gif in Resources */ = {isa = PBXBuildFile; fileRef = 6A4B078C2CC7650E00C044CA /* Mainfirst.gif */; };
 		6A4B07902CC765B700C044CA /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 6A4B078F2CC765B700C044CA /* SDWebImageSwiftUI */; };
 		6A4B07942CC76A9000C044CA /* Mainsecond.gif in Resources */ = {isa = PBXBuildFile; fileRef = 6A4B07932CC76A9000C044CA /* Mainsecond.gif */; };
-		6A6B50932CC68DF400ADBEE6 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 6A6B50922CC68DF400ADBEE6 /* Lottie */; };
 		6AA0C2072CC22CC40098EF87 /* MedicalcardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA0C2062CC22CC40098EF87 /* MedicalcardView.swift */; };
 		A15706202CC0E6DD00115165 /* MainViewProf.swift in Sources */ = {isa = PBXBuildFile; fileRef = A157061F2CC0E6CB00115165 /* MainViewProf.swift */; };
 		A15706222CC0F80C00115165 /* searchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15706212CC0F80000115165 /* searchBarView.swift */; };
@@ -86,7 +85,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6A4B07902CC765B700C044CA /* SDWebImageSwiftUI in Frameworks */,
-				6A6B50932CC68DF400ADBEE6 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -460,6 +458,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DaengDaengWeek/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DaengDaengWeek/Info.plist;
@@ -489,6 +488,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DaengDaengWeek/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DaengDaengWeek/Info.plist;
@@ -557,11 +557,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 6A4B078E2CC765B700C044CA /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
 			productName = SDWebImageSwiftUI;
-		};
-		6A6B50922CC68DF400ADBEE6 /* Lottie */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 6A6B50912CC68DF400ADBEE6 /* XCRemoteSwiftPackageReference "lottie-ios" */;
-			productName = Lottie;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
