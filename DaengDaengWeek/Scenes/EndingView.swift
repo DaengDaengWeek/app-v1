@@ -97,33 +97,31 @@ struct EndingView: View {
                     }
                     
                     .onTapGesture {
-//                        withAnimation(.easeInOut(duration: 0.8)) {
-//                            isFading = true // 텍스트와 이미지 사라지기
-//                        }
                         idx += 1
                         withAnimation(.easeInOut(duration: 0.8)) {
                             isFading = true
-                            isShowing = false // 텍스트와 이미지 사라지기
+                        }
+                        
+                        withAnimation(.easeInOut(duration: 0.8)) {
+                            isShowing = false
                         }
                         
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
                             withAnimation(.easeInOut(duration: 1.5)) {
-                                isBlackScreen = true // 검은 화면으로 전환
+                                isBlackScreen = true
                             }
                             
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                                
-                                
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                                 withAnimation(.easeInOut(duration: 1.5)) {
                                     isBlackScreen = false
-                                    
                                 }
-//                                
-//
+                                
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
-                                    
                                     withAnimation(.easeInOut(duration: 0.8)) {
                                         isFading = false
+                                    }
+                                    
+                                    withAnimation(.easeInOut(duration: 0.8)) {
                                         isShowing = true
                                     }
                                 }

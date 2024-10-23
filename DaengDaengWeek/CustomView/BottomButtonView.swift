@@ -45,10 +45,9 @@ struct BottomButtonView: View {
                                 }
                                 
                                 else if (index == 2) {
-                                    goPark()
-//                                    if (smallIconList[2] == "parkIcon") {
-//                                        goPark()
-//                                    }
+                                    if (smallIconList[2] == "parkIcon") {
+                                        goPark()
+                                    }
                                 }
                                 else if (index == 3) {
                                     if (smallIconList[3] == "hospitalIcon") {
@@ -146,7 +145,7 @@ struct BottomButtonView: View {
                             if (place == "main") {
                                 smallIconList[0] = ""
                                 smallIconList[1] = ""
-                                smallIconList[2] = "foodIcon"
+                                smallIconList[2] = "parkIcon"
                                 smallIconList[3] = "hospitalIcon"
                                 showSmallButtons.toggle()
                             }
