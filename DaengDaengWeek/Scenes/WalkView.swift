@@ -15,98 +15,189 @@ struct WalkView: View {
     @State private var progress: Double = 0.7
     @State private var backgroundOffset: CGFloat = 0
     @State private var showMainView = false
-    
+    @State private var affectionLevel: Double = 0.3
+    @State private var currentGif: String = "WalkMotion.gif"
+    @State private var goToHome = false
     
     @Environment(\.dismiss) var dismiss
     
     private let healthStore = HKHealthStore()
     
     var body: some View {  
+        
         ZStack {
-            // Moving background
-                        GeometryReader { geometry in
-                            Image("walkBackground") // 적절한 배경 이미지로 교체해주세요
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: geometry.size.width * 2)
-                                .offset(x: -backgroundOffset)
-                                .ignoresSafeArea()
-                        }
-                        .onAppear {
-                            withAnimation(.linear(duration: 5).repeatForever(autoreverses: false)) {
-                                backgroundOffset = UIScreen.main.bounds.width
-                            }
-                        }
+            if goToHome {
+                MainView() // HomeView로 전환되면 나타나는 화면
+                    .transition(.opacity) // Fade 애니메이션 적용
+            } else {
+                walkview
+                    .transition(.opacity) // 병원 화면도 Fade 애니메이션 적용
+            }
+        }
+        .animation(.easeInOut(duration: 0.5), value: goToHome) // 애니메이션 효과 적용
+//                
+//                Image("dogwalkwithperson")
+//                    .resizable()
+//                    .frame(width: 35, height: 35)
+//                    .offset(x: CGFloat(progress) * 325 - 150)
+//                    .padding(EdgeInsets(top:-10, leading:0, bottom: 5, trailing: 0))
+//                
+//                
+//                // Progress bar to show exercise progress
+//                HStack {
+//                    ProgressView(value: progress, total: 1.0)
+//                        .progressViewStyle(LinearProgressViewStyle(tint: .green))
+//                        .frame(width: 325)
+//                        .scaleEffect(x: 1, y: 2.5, anchor: .center)
+//                }
+//                .padding(.horizontal)
+//                
+//                // Display step count and exercise time
+//                HStack {
+//                    Spacer()
+//                    Text("            \(steps)걸음")
+//                    Spacer()
+//                    Text("\(exerciseTime)분 / 30분")
+//                }
+//                .padding(.horizontal, 34)
+//                .font(.dw(.bold, size: 16))
+//                
+//                Spacer()
+//            }
+//            
+//            
+//            // Popup view
+//            if showPopup {
+//                PopupView(showPopup: $showPopup)
+//                    .padding(.horizontal, 20)
+//            }
+//        }
+//        .onAppear(perform: fetchHealthData) // Automatically start fetching health data
+    }
+    
+    var walkview: some View {
+        ZStack {
+            GeometryReader { geometry in
+                HStack(spacing: 0) {
+                    Image("walk_bg")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: geometry.size.width, height: geometry.size.height)
+                    Image("walk_bg") // Second copy of the background
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: geometry.size.width, height: geometry.size.height)
+                }
+                .offset(x: -backgroundOffset) // Offset moves both images simultaneously
+                .animation(.linear(duration: 5).repeatForever(autoreverses: false), value: backgroundOffset)
+                .onAppear {
+                    // Animate the background offset to create a continuous scrolling effect
+                    withAnimation(.linear(duration: 10).repeatForever(autoreverses: false)) {
+                        backgroundOffset = geometry.size.width
+                    }
+                }
+                .ignoresSafeArea()
+            }
             
-            VStack{
-                MainViewProf(affectionLevel:.constant(0.3),backgroundColor: Color.clear)
-                    .padding(EdgeInsets(top:-250, leading:0, bottom: 20, trailing: 0))
+            VStack {
                 
-                Spacer()
+                StateView(affectionLevel: $affectionLevel, moneyAmount: .constant(250000), backgroundColor: .clear, isHospital: false)
+                    .padding(.top, 50)
+                    .padding(.trailing, -6)
+
+                Spacer().frame(height: 40)
                 
-                // Dog image
-                AnimatedImage(name: "walkingdog.gif")
+                AnimatedImage(name: "WalkMotion.gif")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 400, height: 200)
-                    .offset(x:-99, y:-30)
+                    .offset(x: -100, y: 130)
                 
-                // Home button above progress bar
-                HStack{
-                    Spacer()
-                    
-                    Button(action: {
-                        showMainView = true
-                    }) {
-                            Image("homeIcon")
-                                .resizable()
-                                .frame(width: 40, height: 40)
+                Spacer().frame(height: 10)
+                
+                VStack {
+                    HStack {
+                        Spacer()
                         
+                        Button(action: goHome) { // goHome을 통해 HomeView로 전환
+                            ZStack {
+                                Circle()
+                                    .stroke(Color.borderGray, lineWidth: 4)
+                                    .fill(Color.btnBeige)
+                                    .frame(width: 68, height: 68)
+                                Image("homeIcon")
+                                    .resizable()
+                                    .frame(width: 56, height: 56)
+                            }
+                        }
+                        .padding(.trailing, 24)
+                        .offset(x: 0, y: 92)
                     }
-                    .padding(EdgeInsets(top:0, leading:10, bottom: 20, trailing: 30))
-                    .fullScreenCover(isPresented: $showMainView){
-                        MainView()
-                    }
+                }
+                .padding(.bottom, 40)
+                
+                Spacer().frame(height: 70)
+                
+                VStack {
+                    Spacer()
                     
+                    Image("walkingIcon")
+                        .resizable()
+                        .frame(width: 35, height: 35)
+                        .offset(x: CGFloat(progress) * 325 - 150)
+                        .padding(.bottom, 4)
+    //                    .padding(EdgeInsets(top:-10, leading:0, bottom: 5, trailing: 0))
+                    
+                    // Progress bar to show exercise progress
+                    HStack {
+                        ZStack {
+                            ProgressView(value: progress, total: 1.0)
+                                .frame(width: 325, height: 16)
+                                //.progressViewStyle(LinearProgressViewStyle(tint: Color(hex: "#70E188")))
+                                .scaleEffect(x: 1, y: 2.5, anchor: .center)
+                                .background(Color.progressBrown)
+                                .cornerRadius(30)
+                                .progressViewStyle(LinearProgressViewStyle(tint: Color(hex: "#70E188")))
+                                .overlay( // Overlay the border with rounded corners
+                                    RoundedRectangle(cornerRadius: 30)
+                                        .stroke(Color.progressBrown, lineWidth: 3)
+                                        .frame(width: 325, height: 14)
+                                )
+                        }
+
+                    }
+                    .padding(.horizontal)
+                    
+                    // Display step count and exercise time
+                    HStack {
+                        Spacer()
+                        Text("            \(steps)걸음")
+                            .foregroundColor(Color.outline)
+                        Spacer()
+                        Text("\(exerciseTime)분 / 30분")
+                            .foregroundColor(Color.outline)
+                    }
+                    .padding(.horizontal, 34)
+                    .font(.dw(.bold, size: 20))
                 }
+                .padding(.bottom, 40)
                 
-                Image("dogwalkwithperson")
-                    .resizable()
-                    .frame(width: 35, height: 35)
-                    .offset(x: CGFloat(progress) * 325 - 150)
-                    .padding(EdgeInsets(top:-10, leading:0, bottom: 5, trailing: 0))
-                
-                
-                // Progress bar to show exercise progress
-                HStack {
-                    ProgressView(value: progress, total: 1.0)
-                        .progressViewStyle(LinearProgressViewStyle(tint: .green))
-                        .frame(width: 325)
-                        .scaleEffect(x: 1, y: 2.5, anchor: .center)
-                }
-                .padding(.horizontal)
-                
-                // Display step count and exercise time
-                HStack {
-                    Spacer()
-                    Text("            \(steps)걸음")
-                    Spacer()
-                    Text("\(exerciseTime)분 / 30분")
-                }
-                .padding(.horizontal, 34)
-                .font(.dw(.bold, size: 16))
-                
-                Spacer()
+                Spacer().frame(height: 30)
             }
             
-            
-            // Popup view
             if showPopup {
                 PopupView(showPopup: $showPopup)
                     .padding(.horizontal, 20)
             }
+            
         }
-        .onAppear(perform: fetchHealthData) // Automatically start fetching health data
+        .statusBar(hidden: true)
+    }
+    
+    func goHome() {
+        withAnimation {
+            goToHome = true // fade 효과와 함께 HomeView로 전환
+        }
     }
     
     func requestHealthData() {
@@ -164,23 +255,26 @@ struct PopupView: View {
                 Spacer()
                 
                 Button(action: { showPopup = false }) {
-                    Image(systemName:"xmark")
+                    Image("closeBtn")
+                        .resizable()
+                        .frame(width: 35, height: 35)
                 }
-                .padding()
+                .padding(.trailing, 10)
             }
             
             Text("걷기 시작하면 산책이 시작돼요.\n산책이 끝나면 집을 눌러주세요.\n함께 산책해 볼까요?")
                 .font(.dw(.bold, size: 20))
                 .lineSpacing(8)
                 .multilineTextAlignment(.center)
-                .padding(EdgeInsets(top:-20, leading:10, bottom: 20, trailing: 10))
+                .offset(x: 0, y: -16)
             
         }
+        .frame(height: 160)
         .background(Color.btnBeige)
         .cornerRadius(20)
         .overlay(
             RoundedRectangle(cornerRadius: 20)
-                .stroke(Color.borderGray, lineWidth: 1))
+                .stroke(Color(hex: "#99746C"), lineWidth: 2))
         .padding()
     }
 }

@@ -161,7 +161,6 @@ struct StateView: View {
             .padding(.trailing, 28)
         }
         .frame(height: 200)
-        //.background(Color(hex: "#CAEEFC")) //영역 확인용 배경색
     }
     
     func updateTime() {
