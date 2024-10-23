@@ -88,6 +88,7 @@ struct HospitalView: View {
                     .padding(.bottom, 50)
             }
         }
+        .statusBar(hidden: true)
     }
     
 //    var body: some View {
