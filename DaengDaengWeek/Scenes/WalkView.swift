@@ -21,7 +21,7 @@ struct WalkView: View {
     
     private let healthStore = HKHealthStore()
     
-    var body: some View {
+    var body: some View {  
         ZStack {
             // Moving background
                         GeometryReader { geometry in
@@ -33,7 +33,7 @@ struct WalkView: View {
                                 .ignoresSafeArea()
                         }
                         .onAppear {
-                            withAnimation(.linear(duration: 4).repeatForever(autoreverses: false)) {
+                            withAnimation(.linear(duration: 5).repeatForever(autoreverses: false)) {
                                 backgroundOffset = UIScreen.main.bounds.width
                             }
                         }

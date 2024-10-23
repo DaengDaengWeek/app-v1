@@ -38,6 +38,7 @@
 		6A4B07942CC76A9000C044CA /* Mainsecond.gif in Resources */ = {isa = PBXBuildFile; fileRef = 6A4B07932CC76A9000C044CA /* Mainsecond.gif */; };
 		6A6B50932CC68DF400ADBEE6 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 6A6B50922CC68DF400ADBEE6 /* Lottie */; };
 		6AA0C2072CC22CC40098EF87 /* MedicalcardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA0C2062CC22CC40098EF87 /* MedicalcardView.swift */; };
+		A10D22282CC64AE00037EF6E /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = A10D22272CC64AE00037EF6E /* SDWebImageSwiftUI */; };
 		A15706202CC0E6DD00115165 /* MainViewProf.swift in Sources */ = {isa = PBXBuildFile; fileRef = A157061F2CC0E6CB00115165 /* MainViewProf.swift */; };
 		A15706222CC0F80C00115165 /* searchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15706212CC0F80000115165 /* searchBarView.swift */; };
 		A1D773292CC8BB4200E91365 /* walkingdog.gif in Resources */ = {isa = PBXBuildFile; fileRef = A1D773282CC8BB4200E91365 /* walkingdog.gif */; };
