@@ -43,7 +43,7 @@ struct HospitalView: View {
             
             VStack {
                 
-                StateView(affectionLevel: $affectionLevel, moneyAmount: .constant(250000), backgroundColor: .clear, isHospital: true)
+                StateView(affectionLevel: $affectionLevel, moneyAmount: .constant(250000), backgroundColor: .clear, isHospital: true, showEncyclo: {})
                     .padding(.top, 50)
                     .padding(.trailing, -6)
 

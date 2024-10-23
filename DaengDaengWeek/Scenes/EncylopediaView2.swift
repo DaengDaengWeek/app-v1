@@ -11,14 +11,16 @@ struct EncyclopediaView2: View {
     @State var text : String = ""
     @State private var expandedSection: String? = nil
     @Environment(\.dismiss) var dismiss
+    @State private var showEncycloPopup = false
+    @Binding var isPresented: Bool
     
     var body: some View {
         ZStack{
-            Image("encylopediabackground")
-                .resizable()
-                .ignoresSafeArea()
             
             VStack {
+                
+                Spacer().frame(height: 60)
+                
                 // Custom tab bar
                 HStack(spacing: 0) {
                     Button(action: {
@@ -33,18 +35,21 @@ struct EncyclopediaView2: View {
                     }) {
                         Image("Bookbtn2")
                     }
+                    .offset(x: 0, y: 3)
                     
                     Button(action: {
                         // Tab 3 action
                     }) {
                         Image("Bookbtn3")
                     }
+                    .offset(x: 0, y: 3)
                     
                     Button(action: {
                         // Tab 4  action
                     }) {
                         Image("Bookbtn4")
                     }
+                    .offset(x: 0, y: 3)
                     
                     Spacer()
                 }
@@ -52,44 +57,40 @@ struct EncyclopediaView2: View {
                 .padding(EdgeInsets(top:23, leading:50, bottom: 0, trailing: 0))
                 
                 VStack {
-                    Button(action: {
-                        print("Dismiss button pressed")
-                        dismiss()
-                    }) {
-                        Image(systemName: "xmark")
-                            .resizable()
-                            .frame(width: 21, height: 21)
+                    HStack {
+                        Spacer()
+                        
+                        Button(action: {
+//                            print("Dismiss button pressed")
+//                            dismiss()
+                            isPresented = false
+                        }) {
+                            Image("closeBtn")
+                                .resizable()
+                                .frame(width: 51, height: 51)
+                        }
+                        .padding(EdgeInsets(top:6, leading:0, bottom: -30, trailing: 4))
                     }
-                    .padding(EdgeInsets(top:15, leading:282, bottom: -30, trailing: 0))
+
                     
                     HStack {
-                        Image("bookicon")
+                        Spacer()
+                        
+                        Image("encycloIcon")
                             .font(.largeTitle)
-                            .padding(EdgeInsets(top:0, leading:28, bottom: 15, trailing: 0))
+                            .frame(width: 46, height: 46)
+                        
+                        Spacer().frame(width: 2)
                         
                         ZStack {
-                            // Border layer
-                            Text("멍멍테니카 백과사전")
-                                .font(.dw(.bold, size: 24)) //폰트 적용 .font(.dw(.굵기, size: 폰트크기))
-                                .foregroundColor(Color.borderGray)
-                                .padding(EdgeInsets(top:0, leading:0, bottom: 20, trailing: 54))
-                                .overlay(
-                                    Text("멍멍테니카 백과사전")
-                                        .font(.dw(.bold, size: 24)) //폰트 적용 .font(.dw(.굵기, size: 폰트크기))
-                                        .foregroundColor(Color.borderBeige) //Border color
-                                        .offset(x:1, y:1)
-                                        .padding(EdgeInsets(top:0, leading:0, bottom: 20, trailing: 54))
-                                )
-                            
-                            //Foreground text
-                            Text("멍멍테니카 백과사전")
-                                .font(.dw(.light, size: 24)) //폰트 적용 .font(.dw(.굵기, size: 폰트크기))
-                                .foregroundColor(.white) // Text Color
-                                .padding(EdgeInsets(top:0, leading:0, bottom: 20, trailing: 54))
+                            Image("encycloTitle")
+                                .resizable()
+                                .frame(width: 190, height: 42)
                         }
+                        Spacer()
                         
                     }
-                    .padding(EdgeInsets(top:20, leading:10, bottom: -15, trailing: 10))
+                    .padding(EdgeInsets(top:10, leading:10, bottom: 6, trailing: 10))
                     
                     HStack{
                         searchBarView(text:self.$text)
@@ -121,7 +122,7 @@ struct EncyclopediaView2: View {
                 .cornerRadius(20)
                 .overlay(
                     RoundedRectangle(cornerRadius: 20)
-                        .stroke(Color.borderGray, lineWidth: 5))
+                        .stroke(Color(hex: "#99746C"), lineWidth: 3))
                 .padding(EdgeInsets(top:-15, leading:28, bottom: 177, trailing: 27))
             }
             .foregroundColor(Color.black)
@@ -169,17 +170,22 @@ struct SectionButton: View {
                         }) {
                             VStack{
                                 HStack{
-                                    Image("feedstuff")
+                                    Image("foodIcon")
+                                        .resizable()
                                         .font(.largeTitle)
-                                        .padding()
+                                        .frame(width: 20, height: 20)
+
                                     Text("사료주기 • 1")
                                         .font(.dw(.bold, size: 14)) //폰트 적용 .font(.dw(.굵기, size: 폰트크기))
                                     Spacer()
                                 }
+                                .padding(.leading, 14)
+                                .padding(.top, 18)
+                                
                                 Text("강아지는 성장 단계에 따라 하루에 사료를 주는 횟수가 달라집니다. 대부분의 경우 어릴 땐 하루 4~5회, 성견일 땐 2회 정도가 적당합니다.")
                                     .font(.dw(.light, size: 14)) //폰트 적용 .font(.dw(.굵기, size: 폰트크기))
                                     .multilineTextAlignment(.leading)
-                                    .padding(EdgeInsets(top:-15, leading:10, bottom: 5, trailing: 10))
+                                    .padding(EdgeInsets(top:0, leading:14, bottom: 5, trailing: 14))
                                 Rectangle()
                                     .frame(width: 265, height:1)
                                     .background(Color.lineGray)
@@ -250,5 +256,5 @@ struct SectionButton: View {
     
 
 #Preview {
-    EncyclopediaView2()
+    EncyclopediaView2(isPresented: .constant(true))
 }

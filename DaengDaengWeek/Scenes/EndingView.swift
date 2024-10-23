@@ -21,18 +21,35 @@ struct EndingView: View {
     
     @State private var idx = 0
     @State private var isFading = false // 화면 전체 페이드아웃 컨트롤
-    @State private var isShowing = false // 텍스트 컨트롤
+    @State private var isShowingPolaroid = false // PolaroidView 컨트롤
+    @State private var isShowingText = false // 텍스트 컨트롤
     @State private var isBlackScreen = true
     @State private var goToHome = false
+    @State private var goToStartView = false
     
     var body: some View {
+        ZStack {
+            
+            if goToStartView {
+                StartView()
+                    .transition(.opacity)
+            }
+            else {
+                endingview
+                    .transition(.opacity)
+            }
+            
+        }
+    }
+    
+    var endingview: some View {
         ZStack {
             Color.black.ignoresSafeArea()
             
             if isBlackScreen { // 검은 화면으로 페이드아웃 효과
                 Color.black
                     .ignoresSafeArea()
-                    .transition(.opacity)
+                .transition(.opacity)
             }
             
             if idx == 3 {
@@ -43,21 +60,21 @@ struct EndingView: View {
                     .multilineTextAlignment(.center)
                     .lineSpacing(3)
                     .frame(width: 308)
-                    .opacity(isShowing ? 1 : 0)
+                    .opacity(isShowingText ? 1 : 0)
                     .transition(.opacity)
                     .onAppear {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                             withAnimation(.easeInOut(duration: 0.8)) {
-                                isShowing = true
+                                isShowingText = true
                             }
                         }
                     }
                     .onTapGesture {
                         let _ = print("End")
                         withAnimation(.easeInOut(duration: 0.8)) {
-                            isShowing = false
+                            isShowingText = false
                         }
-                        // 엔딩 종료, 시작 화면으로 이동
+                        goStart()
                     }
                 
                 Spacer().frame(height: 164)
@@ -70,6 +87,7 @@ struct EndingView: View {
                         PolaroidView(photoImg: photoImgList[idx], photoText: photoTextList[idx], dateText: dateTextList[idx])
                             .padding(.top, 133)
                             .transition(.opacity)
+                            .opacity(isShowingPolaroid ? 1 : 0)
                         
                         Spacer().frame(height: 27)
                         
@@ -79,7 +97,7 @@ struct EndingView: View {
                             .multilineTextAlignment(.center)
                             .lineSpacing(3)
                             .frame(width: 308, height: 90)
-                            .opacity(isShowing ? 1 : 0)
+                            .opacity(isShowingText ? 1 : 0)
                             .transition(.opacity)
                         
                         Spacer().frame(height: 154)
@@ -91,96 +109,68 @@ struct EndingView: View {
                             }
                             
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                                isShowing = true // 텍스트와 이미지 표시 시작
+                                withAnimation(.easeInOut(duration: 1.0)) {
+                                    isShowingPolaroid = true // PolaroidView 표시
+                                }
+                                
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                                    withAnimation(.easeInOut(duration: 1.0)) {
+                                        isShowingText = true // 텍스트 표시
+                                    }
+                                }
                             }
                         }
                     }
                     
                     .onTapGesture {
                         idx += 1
-                        withAnimation(.easeInOut(duration: 0.8)) {
-                            isFading = true
-                        }
-                        
-                        withAnimation(.easeInOut(duration: 0.8)) {
-                            isShowing = false
-                        }
-                        
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
-                            withAnimation(.easeInOut(duration: 1.5)) {
-                                isBlackScreen = true
-                            }
-                            
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                                withAnimation(.easeInOut(duration: 1.5)) {
-                                    isBlackScreen = false
-                                }
-                                
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
-                                    withAnimation(.easeInOut(duration: 0.8)) {
-                                        isFading = false
-                                    }
-                                    
-                                    withAnimation(.easeInOut(duration: 0.8)) {
-                                        isShowing = true
-                                    }
-                                }
-                            }
-                        }
+                        moveToNext()
+                    }
+                }
+            }
+        }
+        
+    }
+    
+    func goStart() {
+        withAnimation {
+            goToStartView = true // fade 효과와 함께 HomeView로 전환
+        }
+    }
+    
+    private func moveToNext() {
+        
+        withAnimation(.easeInOut(duration: 0.8)) {
+            isShowingText = false
+            isShowingPolaroid = false
+            
+            withAnimation(.easeInOut(duration: 0.8)) {
+                isFading = true
+            }
+            
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+            withAnimation(.easeInOut(duration: 0.8)) {
+                isBlackScreen = true
+            }
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                withAnimation(.easeInOut(duration: 1.5)) {
+                    isBlackScreen = false
+                }
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+                    withAnimation(.easeInOut(duration: 1.0)) {
+                        isFading = false
+                        isShowingPolaroid = true
                     }
                     
-//                    .onTapGesture {
-//                        withAnimation(.easeInOut(duration: 0.8)) {
-//                            isFading = true
-//                        }
-//                        
-//                        withAnimation(.easeInOut(duration: 0.8)) {
-//                            isShowing = false // 텍스트와 이미지 사라지기
-//                        }
-//                        withAnimation(.easeInOut(duration: 0.8)) {
-//                            isBlackScreen = true // 검은 화면으로 전환
-//                        }
-//                        
-//                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) { // 검은 화면 후 새로운 컨텐츠
-//                            idx += 1
-//                            
-//                            withAnimation(.easeInOut(duration: 0.8)) {
-//                                isFading = false // 검은 화면에서 다음 화면으로 전환
-//                            }
-//                            withAnimation(.easeInOut(duration: 0.8)) {
-//                                isBlackScreen = false // 검은 화면에서 다음 화면으로 전환
-//                            }
-//                            
-//                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
-//                                withAnimation(.easeInOut(duration: 0.8)) {
-//                                    isShowing = true // 다음 텍스트와 이미지 등장
-//                                }
-//                            }
-//                        }
-//                    }
-//                    .onTapGesture {
-//                        withAnimation(.easeInOut(duration: 0.8)) {
-//                            isFading = true
-//                        }
-//                        
-//                        withAnimation(.easeInOut(duration: 0.8)) {
-//                            isShowing = false
-//                        }
-//                        
-//                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
-//                            idx += 1
-//                            
-//                            withAnimation(.easeInOut(duration: 0.8)) {
-//                                isFading = false
-//                            }
-//
-//                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
-//                                withAnimation(.easeInOut(duration: 0.8)) {
-//                                    isShowing = true
-//                                }
-//                            }
-//                        }
-//                    }
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                        withAnimation(.easeInOut(duration: 1.0)) {
+                            isShowingText = true
+                        }
+                    }
                 }
             }
         }
@@ -236,5 +226,6 @@ struct PolaroidView: View {
 
         }
         .frame(width: 310, height: 470)
+        .padding(.horizontal, 45)
     }
 }

@@ -54,7 +54,7 @@ struct AnimatedGifView: View {
 //                    }
                     
                     // 원상복구 후 GIF 변경
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 4.5) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
 //                        gifOffsetX = 0
 //                        gifOffsetY = 0
 //                        gifSize = 230

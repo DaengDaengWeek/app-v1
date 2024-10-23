@@ -17,10 +17,15 @@ struct MainView: View {
     @State private var showSmallIcons: Bool = false
     @State private var showPlaceIcons: Bool = false
     @State private var moneyAmounts: Int = 0
-    @State private var currentGif: String = "MainMotion2.gif"
+    @State private var currentGif: String = "MainMotion1.gif"
+    @State private var isMainMotion1Active: Bool = true
+    @State private var gifTimer: Timer?
+    @State private var mainTimer: Timer?
+    @State private var randomTimer: Timer?
     @State private var goToHospital: Bool = false
     @State private var goToPark: Bool = false
     @State private var showEndingPopup = false // 팝업 상태 관리
+    @State private var showEncylopediaView = false
 
     // 먹이주기 지속 시간 (초)
     private let feedingDuration: TimeInterval = 30.0
@@ -36,25 +41,42 @@ struct MainView: View {
     var body: some View {
         ZStack {
             if goToHospital {
-                HospitalView() // 병원 화면으로 전환
-                    .transition(.opacity) // fade-out 애니메이션
+                HospitalView()
+                    .transition(.opacity)
                     .animation(.easeInOut(duration: 0.5))
             }
             else if goToPark {
-                WalkView() // 공원 화면으로 전환
-                    .transition(.opacity) // fade-out 애니메이션
+                WalkView()
+                    .transition(.opacity)
                     .animation(.easeInOut(duration: 0.5))
             }
             else {
-                mainContent // MainView의 기존 콘텐츠
-                    .transition(.opacity) // fade-out 애니메이션
+                mainContent
+                    .transition(.opacity)
             }
             
             if showEndingPopup {
                 EndingPopupView()
-                    .transition(.opacity) // 팝업에 fade 효과 적용
-                    .animation(.easeInOut(duration: 4.0))
+                    .transition(.opacity)
+                    .animation(.easeInOut(duration: 2.0))
             }
+            
+            if showEncylopediaView {
+                Color(hex: "#D0BBBB")
+                    .opacity(0.6)
+                    .ignoresSafeArea()
+                
+                EncyclopediaView2(isPresented: $showEncylopediaView)
+                    .transition(.scale)
+                    .animation(.easeInOut(duration: 0.5), value: showEncylopediaView) // 애니메이션 적용
+                
+            }
+        }
+        .onAppear {
+            startInitialGifCycle()
+        }
+        .onDisappear {
+            stopGifCycles()
         }
 
 
@@ -96,7 +118,9 @@ struct MainView: View {
             
             VStack {
                 
-                StateView(affectionLevel: $affectionLevel, moneyAmount: .constant(250000), backgroundColor: .clear, isHospital: false)
+                StateView(affectionLevel: $affectionLevel, moneyAmount: .constant(250000), backgroundColor: .clear, isHospital: false, showEncyclo: {
+                    showEncyclopedia()
+                })
                     .padding(.top, 50)
                     .padding(.trailing, -6)
 
@@ -123,6 +147,50 @@ struct MainView: View {
             }
         }
         .statusBar(hidden: true)
+    }
+    
+    func startInitialGifCycle() {
+        // 첫 번째 GIF는 MainMotion1으로 시작하고 2.5초 뒤 MainMotion2로 전환
+        currentGif = "MainMotion1.gif"
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+            currentGif = "MainMotion2.gif"
+            startRandomGifCycle()
+        }
+    }
+    
+    // 랜덤하게 MainMotion1을 가끔씩 재생하는 타이머 설정
+    func startRandomGifCycle() {
+        mainTimer = Timer.scheduledTimer(withTimeInterval: 30.0, repeats: true) { _ in
+            if !isMainMotion1Active {
+                currentGif = "MainMotion2.gif"
+            }
+        }
+
+        randomTimer = Timer.scheduledTimer(withTimeInterval: Double.random(in: 15...60), repeats: true) { _ in
+            if !isMainMotion1Active {
+                playMainMotion1Randomly()
+            }
+        }
+    }
+    
+    func playMainMotion1Randomly() {
+        isMainMotion1Active = true
+        currentGif = "MainMotion1.gif"
+        
+        // 2.5초 뒤에 다시 MainMotion2로 복귀
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+            currentGif = "MainMotion2.gif"
+            isMainMotion1Active = false
+        }
+    }
+
+    // 타이머 멈추기
+    func stopGifCycles() {
+        mainTimer?.invalidate()
+        randomTimer?.invalidate()
+        mainTimer = nil
+        randomTimer = nil
     }
 
     // 현재 시간 업데이트 함수
@@ -157,6 +225,12 @@ struct MainView: View {
     func goPark() {
         withAnimation {
             goToPark = true
+        }
+    }
+    
+    func showEncyclopedia() {
+        withAnimation {
+            showEncylopediaView = true
         }
     }
     

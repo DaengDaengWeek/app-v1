@@ -1,7 +1,10 @@
 import SwiftUI
 
-struct PledgeView: View {
+struct SettingView: View {
     // MARK: - 사용자 입력 속성
+    @Binding var isPresented: Bool
+    var onAgree: () -> Void
+    
     @State private var name: String = ""              // 사용자 입력 이름
     @State private var breed: String = "푸들"           // 선택된 견종 (기본값: "푸들")
     @State private var gender: String = "남"            // 선택된 성별 (기본값: "남")
@@ -42,9 +45,6 @@ struct PledgeView: View {
     // MARK: - 뷰 본문
     var body: some View {
         ZStack(alignment: .topTrailing) {
-            // 반투명한 흰색 배경
-            Color.white.opacity(0.4)
-                .edgesIgnoringSafeArea(.all)
 
             // 메인 컨텐츠 컨테이너
             ZStack {
@@ -176,11 +176,13 @@ struct PledgeView: View {
                     // MARK: - 동의하기 버튼
                     Button(action: {
                         // 진행하기 전에 이름 유효성 검사
-                        isValidName = isNameValid(name)
-                        if isValidName {
-                            print("동의하기 버튼 클릭됨")
-                            // 추가 동작을 여기에 추가
-                        }
+//                        isValidName = isNameValid(name)
+//                        if isValidName {
+//                            print("동의하기 버튼 클릭됨")
+//                            // 추가 동작을 여기에 추가
+//                        }
+                        isPresented = false // 설정 화면 닫기
+                        onAgree()
                     }) {
                         Text("동의하기")
                             .font(.dw(.bold, size: 24))
@@ -201,15 +203,13 @@ struct PledgeView: View {
             // MARK: - 닫기 버튼 (이미지로 대체)
             Button(action: {
                 // 뷰 닫기
-                presentationMode.wrappedValue.dismiss()
+                isPresented = false
             }) {
-                Image("Xmarkicon") // 닫기 버튼 이미지
+                Image("closeBtn") // 닫기 버튼 이미지
                     .resizable()
                     .scaledToFit()
                     .frame(width: 50, height: 50) // 이미지 크기 조정
                     .padding()
-                    .clipShape(Circle())
-                    .shadow(radius: 3)
             }
             .padding(.top, 20)
             .padding(.trailing, 20)
@@ -218,5 +218,5 @@ struct PledgeView: View {
 }
 
 #Preview {
-    PledgeView()
+    SettingView(isPresented: .constant(true), onAgree: {})
 }
