@@ -17,6 +17,7 @@ struct StateView: View {
     
     let backgroundColor: Color // 배경색 설정
     var isHospital: Bool // 병원인지 체크 (진료카드 버튼 hidden 여부)
+    let showEncyclo: () -> Void
     
     var body: some View {
         ZStack {
@@ -141,7 +142,9 @@ struct StateView: View {
                     }
                     .padding(.bottom, 2)
                     
-                    Button(action:{}) {
+                    Button(action:{
+                        showEncyclo()
+                    }) {
                         Image("bookIcon")
                             .resizable()
                             .scaledToFit()
@@ -176,6 +179,6 @@ struct StateView: View {
 }
 
 #Preview {
-    StateView(affectionLevel:.constant(0.3), moneyAmount: .constant(0), backgroundColor:.clear, isHospital: false)
+    StateView(affectionLevel:.constant(0.3), moneyAmount: .constant(0), backgroundColor:.clear, isHospital: false, showEncyclo: {})
 }
 

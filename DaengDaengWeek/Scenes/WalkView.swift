@@ -101,7 +101,7 @@ struct WalkView: View {
             
             VStack {
                 
-                StateView(affectionLevel: $affectionLevel, moneyAmount: .constant(250000), backgroundColor: .clear, isHospital: false)
+                StateView(affectionLevel: $affectionLevel, moneyAmount: .constant(250000), backgroundColor: .clear, isHospital: false, showEncyclo: {})
                     .padding(.top, 50)
                     .padding(.trailing, -6)
 
