@@ -17,6 +17,10 @@ struct HospitalView: View {
     @State private var activePopup: String? = nil
     @State private var currentGif: String = "HospitalMotion.gif"
     @State private var goToHome = false
+    @State private var showEncylopediaView = false
+    @State private var showProfileView = false
+    @State private var showChartView = false
+    @State private var moneyAmount: Int = 250000
     
     let BigButtonList = ["treatmentIcon", "checkupIcon", "injectionIcon", "beautyIcon"]
     let BigButtonTextList = ["진료받기", "건강검진", "예방접종", "미용하기"]
@@ -29,6 +33,39 @@ struct HospitalView: View {
             } else {
                 hospitalview
                     .transition(.opacity) // 병원 화면도 Fade 애니메이션 적용
+            }
+            
+            if showEncylopediaView {
+                Color.gray
+                    .opacity(0.6)
+                    .ignoresSafeArea()
+                
+                EncyclopediaView2(isPresented: $showEncylopediaView)
+                    .transition(.scale)
+                    .animation(.easeInOut(duration: 0.5), value: showEncylopediaView) // 애니메이션 적용
+                
+            }
+            
+            if showProfileView {
+                Color.gray
+                    .opacity(0.6)
+                    .ignoresSafeArea()
+                
+                IdentityCardView(isPresented: $showProfileView)
+                    .transition(.scale)
+                    .animation(.easeInOut(duration: 0.5), value: showProfileView) // 애니메이션 적용
+                
+            }
+            
+            if showChartView {
+                Color.gray
+                    .opacity(0.6)
+                    .ignoresSafeArea()
+                
+                MedicalCardView(isPresented: $showChartView, moneyAmount: $moneyAmount)
+                    .transition(.scale)
+                    .animation(.easeInOut(duration: 0.5), value: showChartView) // 애니메이션 적용
+                
             }
         }
         .animation(.easeInOut(duration: 0.5), value: goToHome) // 애니메이션 효과 적용
@@ -43,7 +80,7 @@ struct HospitalView: View {
             
             VStack {
                 
-                StateView(affectionLevel: $affectionLevel, moneyAmount: .constant(250000), backgroundColor: .clear, isHospital: true, showEncyclo: {})
+                StateView(affectionLevel: $affectionLevel, moneyAmount: .constant(250000), backgroundColor: .clear, isHospital: true, showEncyclo: { showEncyclopedia() }, popupProfile: { showProfile() }, showChart: { showChart() })
                     .padding(.top, 50)
                     .padding(.trailing, -6)
 
@@ -156,6 +193,24 @@ struct HospitalView: View {
     func goHome() {
         withAnimation {
             goToHome = true // fade 효과와 함께 HomeView로 전환
+        }
+    }
+    
+    func showEncyclopedia() {
+        withAnimation {
+            showEncylopediaView = true
+        }
+    }
+    
+    func showChart() {
+        withAnimation {
+            showChartView = true
+        }
+    }
+    
+    func showProfile() {
+        withAnimation {
+            showProfileView = true
         }
     }
 }

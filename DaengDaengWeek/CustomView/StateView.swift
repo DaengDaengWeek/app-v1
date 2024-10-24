@@ -18,6 +18,8 @@ struct StateView: View {
     let backgroundColor: Color // 배경색 설정
     var isHospital: Bool // 병원인지 체크 (진료카드 버튼 hidden 여부)
     let showEncyclo: () -> Void
+    let popupProfile: () -> Void
+    let showChart: () -> Void
     
     var body: some View {
         ZStack {
@@ -28,16 +30,19 @@ struct StateView: View {
                     HStack { // 프로필 | 마루, 호감도
                         Spacer().frame(width: 22) //24?
                         
-                        ZStack {
-                            Circle()
-                                .fill(Color.btnBeige)
-                                .frame(width: 60, height: 60)
-                            
-                            Image("profileImg1") // 반려견 아이콘
-                                .resizable()
-                                .frame(width: 54, height: 54)
+                        Button(action: popupProfile) {
+                            ZStack {
+                                Circle()
+                                    .fill(Color.btnBeige)
+                                    .frame(width: 60, height: 60)
+                                
+                                Image("profileImg1") // 반려견 아이콘
+                                    .resizable()
+                                    .frame(width: 54, height: 54)
+                            }
+                            .padding(.top, 10)
                         }
-                        .padding(.top, 10)
+
                         
                         Spacer().frame(width: 8)
                         
@@ -152,7 +157,9 @@ struct StateView: View {
                     }
                     .padding(.bottom, 2)
                     
-                    Button(action: {}) {
+                    Button(action: {
+                        showChart()
+                    }) {
                         Image("chartIcon")
                             .resizable()
                             .scaledToFit()
@@ -179,6 +186,6 @@ struct StateView: View {
 }
 
 #Preview {
-    StateView(affectionLevel:.constant(0.3), moneyAmount: .constant(0), backgroundColor:.clear, isHospital: false, showEncyclo: {})
+    StateView(affectionLevel:.constant(0.3), moneyAmount: .constant(0), backgroundColor:.clear, isHospital: false, showEncyclo: {}, popupProfile: {}, showChart: {})
 }
 

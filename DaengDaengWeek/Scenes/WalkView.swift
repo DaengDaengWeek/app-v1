@@ -19,6 +19,8 @@ struct WalkView: View {
     @State private var affectionLevel: Double = 0.3
     @State private var currentGif: String = "WalkMotion.gif"
     @State private var goToHome = false
+    @State private var showEncylopediaView = false
+    @State private var showProfileView = false
     
     @Environment(\.dismiss) var dismiss
     
@@ -33,6 +35,28 @@ struct WalkView: View {
             } else {
                 walkview
                     .transition(.opacity) // 병원 화면도 Fade 애니메이션 적용
+            }
+            
+            if showEncylopediaView {
+                Color.gray
+                    .opacity(0.6)
+                    .ignoresSafeArea()
+                
+                EncyclopediaView2(isPresented: $showEncylopediaView)
+                    .transition(.scale)
+                    .animation(.easeInOut(duration: 0.5), value: showEncylopediaView) // 애니메이션 적용
+                
+            }
+            
+            if showProfileView {
+                Color.gray
+                    .opacity(0.6)
+                    .ignoresSafeArea()
+                
+                IdentityCardView(isPresented: $showProfileView)
+                    .transition(.scale)
+                    .animation(.easeInOut(duration: 0.5), value: showProfileView) // 애니메이션 적용
+                
             }
         }
         .animation(.easeInOut(duration: 0.5), value: goToHome) // 애니메이션 효과 적용
@@ -102,7 +126,7 @@ struct WalkView: View {
             
             VStack {
                 
-                StateView(affectionLevel: $affectionLevel, moneyAmount: .constant(250000), backgroundColor: .clear, isHospital: false, showEncyclo: {})
+                StateView(affectionLevel: $affectionLevel, moneyAmount: .constant(250000), backgroundColor: .clear, isHospital: false, showEncyclo: { }, popupProfile: { }, showChart: {})
                     .padding(.top, 50)
                     .padding(.trailing, -6)
 
@@ -205,6 +229,18 @@ struct WalkView: View {
     func goHome() {
         withAnimation {
             goToHome = true // fade 효과와 함께 HomeView로 전환
+        }
+    }
+    
+    func showEncyclopedia() {
+        withAnimation {
+            showEncylopediaView = true
+        }
+    }
+    
+    func showProfile() {
+        withAnimation {
+            showProfileView = true
         }
     }
     
