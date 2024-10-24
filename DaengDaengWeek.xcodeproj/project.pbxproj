@@ -19,6 +19,7 @@
 		382262F92CC84D850028C6C1 /* EndingPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382262F82CC84D850028C6C1 /* EndingPopupView.swift */; };
 		382262FB2CC8E59E0028C6C1 /* WalkMotion.gif in Resources */ = {isa = PBXBuildFile; fileRef = 382262FA2CC8E59E0028C6C1 /* WalkMotion.gif */; };
 		382262FD2CC9911C0028C6C1 /* IdentityCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382262FC2CC9911C0028C6C1 /* IdentityCardView.swift */; };
+		382262FF2CC999C00028C6C1 /* MedicalCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382262FE2CC999C00028C6C1 /* MedicalCardView.swift */; };
 		38AFC4142CBD0C0700D9414E /* DaengDaengWeekApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38AFC4132CBD0C0700D9414E /* DaengDaengWeekApp.swift */; };
 		38AFC4162CBD0C0700D9414E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38AFC4152CBD0C0700D9414E /* ContentView.swift */; };
 		38AFC4182CBD0C0800D9414E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38AFC4172CBD0C0800D9414E /* Assets.xcassets */; };
@@ -58,6 +59,7 @@
 		382262F82CC84D850028C6C1 /* EndingPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndingPopupView.swift; sourceTree = "<group>"; };
 		382262FA2CC8E59E0028C6C1 /* WalkMotion.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = WalkMotion.gif; sourceTree = "<group>"; };
 		382262FC2CC9911C0028C6C1 /* IdentityCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentityCardView.swift; sourceTree = "<group>"; };
+		382262FE2CC999C00028C6C1 /* MedicalCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicalCardView.swift; sourceTree = "<group>"; };
 		38AFC4102CBD0C0700D9414E /* DaengDaengWeek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DaengDaengWeek.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38AFC4132CBD0C0700D9414E /* DaengDaengWeekApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaengDaengWeekApp.swift; sourceTree = "<group>"; };
 		38AFC4152CBD0C0700D9414E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -224,6 +226,7 @@
 				382262F42CC833600028C6C1 /* AnimatedGifView.swift */,
 				382262F82CC84D850028C6C1 /* EndingPopupView.swift */,
 				382262FC2CC9911C0028C6C1 /* IdentityCardView.swift */,
+				382262FE2CC999C00028C6C1 /* MedicalCardView.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -314,6 +317,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				382262FF2CC999C00028C6C1 /* MedicalCardView.swift in Sources */,
 				A15706202CC0E6DD00115165 /* MainViewProf.swift in Sources */,
 				38AFC4272CBD9C3F00D9414E /* Font.swift in Sources */,
 				38AFC42B2CBD9D0200D9414E /* MainView.swift in Sources */,
@@ -474,6 +478,9 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DaengDaengWeek/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "댕댕위크";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "이 앱은 걸음 수와 운동 시간을 추적하기 위해 건강 데이터에 접근해야 합니다.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "이 앱은 운동 정보를 통해 건강 데이터를 업데이트합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -484,7 +491,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.foundation.DaengDaengWeek;
+				PRODUCT_BUNDLE_IDENTIFIER = com.foundation.DaengDaengWeek23;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -504,6 +511,9 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DaengDaengWeek/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "댕댕위크";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "이 앱은 걸음 수와 운동 시간을 추적하기 위해 건강 데이터에 접근해야 합니다.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "이 앱은 운동 정보를 통해 건강 데이터를 업데이트합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -514,7 +524,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.foundation.DaengDaengWeek;
+				PRODUCT_BUNDLE_IDENTIFIER = com.foundation.DaengDaengWeek23;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

@@ -26,6 +26,7 @@ struct MainView: View {
     @State private var goToPark: Bool = false
     @State private var showEndingPopup = false // 팝업 상태 관리
     @State private var showEncylopediaView = false
+    @State private var showProfileView = false
 
     // 먹이주기 지속 시간 (초)
     private let feedingDuration: TimeInterval = 30.0
@@ -69,6 +70,17 @@ struct MainView: View {
                 EncyclopediaView2(isPresented: $showEncylopediaView)
                     .transition(.scale)
                     .animation(.easeInOut(duration: 0.5), value: showEncylopediaView) // 애니메이션 적용
+                
+            }
+            
+            if showProfileView {
+                Color(hex: "#D0BBBB")
+                    .opacity(0.6)
+                    .ignoresSafeArea()
+                
+                IdentityCardView(isPresented: $showProfileView)
+                    .transition(.scale)
+                    .animation(.easeInOut(duration: 0.5), value: showProfileView) // 애니메이션 적용
                 
             }
         }
@@ -120,7 +132,7 @@ struct MainView: View {
                 
                 StateView(affectionLevel: $affectionLevel, moneyAmount: .constant(250000), backgroundColor: .clear, isHospital: false, showEncyclo: {
                     showEncyclopedia()
-                })
+                }, popupProfile: { showProfile() }, showChart: {})
                     .padding(.top, 50)
                     .padding(.trailing, -6)
 
@@ -231,6 +243,12 @@ struct MainView: View {
     func showEncyclopedia() {
         withAnimation {
             showEncylopediaView = true
+        }
+    }
+    
+    func showProfile() {
+        withAnimation {
+            showProfileView = true
         }
     }
     
