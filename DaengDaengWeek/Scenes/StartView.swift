@@ -60,6 +60,7 @@ struct StartView: View {
         .onReceive(colorChangePublisher) { _ in
             handleColorChange() // 배경색 전환 처리
         }
+        .statusBar(hidden: true)
     }
 
     // 배경 그라데이션 뷰
